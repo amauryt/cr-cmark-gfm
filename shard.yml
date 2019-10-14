@@ -1,4 +1,4 @@
-name: cr-cmark-gfm
+name: cmark
 version: 0.1.0
 description: Crystal C bindings for cmark-gfm to work with Commonmark and Github Flavored Markdown
 

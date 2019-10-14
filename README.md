@@ -28,7 +28,7 @@ Add the dependency to your `shard.yml` and then run `shards install`:
 
 ```yaml
 dependencies:
-  cr-cmark-gfm:
+  cmark:
     github: amauryt/cr-cmark-gfm
 ```
 
