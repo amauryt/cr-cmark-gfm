@@ -4,7 +4,7 @@
 
 [API Documentation](https://amauryt.github.io/cr-cmark-gfm/)
 
-Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown FM (v.29). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
+Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown (v.29). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
 
 
 Features:
@@ -17,7 +17,7 @@ Features:
     - Commonmark (including GFM-only nodes)
     - Groff man pages
     - LaTeX
-  - Create custom renderers or customize the included crystal HTML renderer, wwhich outputs the same HTML as the library's C renderer
+  - Create custom renderers or customize the included crystal HTML renderer, which outputs the same HTML as the library's C renderer
   - Getters and setters for almost all of the properties of AST nodes
   - Tree traversal and manipulation
   - Directly create and customize nodes
