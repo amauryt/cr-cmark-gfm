@@ -4,6 +4,9 @@ crystal:
   - latest
   - nightly
 
+before_script:
+  - cd ext && make && cd -
+
 script:
   - crystal spec
 
