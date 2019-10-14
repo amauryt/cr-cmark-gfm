@@ -1,5 +1,5 @@
 module Cmark
-  # A text alignment for columns of nodes with `NodeType::Table`.
+  # A text alignment value for columns of nodes with `NodeType::Table`.
   enum Alignment : UInt8
     # C library value '\0'
     None    = 0x00

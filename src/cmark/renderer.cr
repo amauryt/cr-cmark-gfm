@@ -1,4 +1,5 @@
 module Cmark
+  # The base renderer class from which to inherit for full custom node rendering.
   abstract class Renderer
     private UNSAFE_PROTOCOL_REGEX = /^javascript:|vbscript:|file:|data:/i
     private UNSAFE_DATA_PROTOCOL_REGEX = /^data:image\/(?:png|gif|jpeg|webp)/i

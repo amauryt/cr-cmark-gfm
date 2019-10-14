@@ -3,12 +3,12 @@ require "./lib_cmark"
 module Cmark
   # Represents the type of a node.
   #
-  # In addition, if valid, the type can be grouped into several categories:
+  # If valid, the type can be grouped into several categories:
   # 1) block or inline; 2) Commonmark or GFM; and 3) container or leaf.
   # Use the respective method to check the node type category:
-  #   1. `#block?` and `#inline?``
-  #   2. `#commonmark?` and `#gfm?`
-  #   3. `#container?` and `#leaf?``
+  #   1. `#block?` or `#inline?`
+  #   2. `#commonmark?` or `#gfm?`
+  #   3. `#container?` or `#leaf?`
   #
   # If the node is _invalid_ it has the type `None`, and all of the previous methods will return false.
   #
@@ -66,7 +66,7 @@ module Cmark
   # are not defined in the GFM spec.
   # Therefore, they can be enabled in so-called *Commonmark-only* methods using `Option::Footnotes`.
   # Normal inconsistencies when trying to define a standard specification‽
-  # For more information regarding footnotes in cmark-gfm see [this pull request](https://github.com/github/cmark-gfm/pull/64)".
+  # For more information regarding footnotes in cmark-gfm see [this pull request](https://github.com/github/cmark-gfm/pull/64).
   # To check if an element is part of a syntax extension use `#syntax_extension?`.
   #
   # NOTE: The numeric values of GFM extensions types do not correspond to their counterpart in the C library because

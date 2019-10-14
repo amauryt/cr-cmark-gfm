@@ -2,8 +2,10 @@
 
 # cr-cmark-gfm
 
+(API Documentation)[https://amauryt.github.io/cr-cmark-gfm/]
 
 Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown FM (v.29). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
+
 
 Features:
 

@@ -2,7 +2,6 @@ language: crystal
 
 crystal:
   - latest
-  - nightly
 
 before_script:
   - cd ext && make && cd -
