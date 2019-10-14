@@ -97,7 +97,7 @@ module Cmark
   # node creation, processing, and rendering**.
   class Node
     # Keeps track of the number of instances to free LibCmark::CmarkNode pointers.
-    @@instances = Hash(UInt64, UInt32).new(0)
+    @@instances = Hash(Pointer(Cmark::LibCmark::CmarkNode), UInt32).new(0)
 
     protected getter node_p : LibCmark::CmarkNode*
 
@@ -118,16 +118,21 @@ module Cmark
     end
 
     protected def initialize(@node_p)
-
+      @@instances[@node_p] += 1
     end
 
     protected def initialize(type : LibCmark::NodeType)
       @node_p = LibCmark.cmark_node_new(type)
+      @@instances[@node_p] += 1
     end
 
     # :nodoc:
     def finalize
-      LibCmark.cmark_node_free(@node_p) if LibCmark.cmark_node_parent(@node_p).null?
+      @@instances[@node_p] -= 1
+      if @@instances[@node_p].zero?
+        @@instances.delete(@node_p)
+        LibCmark.cmark_node_free(@node_p) if LibCmark.cmark_node_parent(@node_p).null?
+      end
     end
 
     # === Traversal
