@@ -20,4 +20,4 @@ deploy:
   keep-history: false
   local-dir: docs
   on:
-    branch: gh-pages
+    condition: "$TRAVIS_EVENT_TYPE != cron"

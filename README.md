@@ -1,8 +1,9 @@
+[![Build Status](https://travis-ci.org/amauryt/cr-cmark-gfm.svg?branch=master)](https://travis-ci.org/amauryt/cr-cmark-gfm)
+
 # cr-cmark-gfm
 
-Crystal C bindings for cmark-gfm to work with Commonmark and Github Flavored Markdown.
 
-It supports the full spec of the latest version of GFM (v.29). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
+Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown FM (v.29). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
 
 Features:
 
