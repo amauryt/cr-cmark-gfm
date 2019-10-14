@@ -41,7 +41,7 @@ The `Cmark` module offers high-level parsing and rendering of markdown content, 
 If the content is Commonmark-only use the respective _commonmark_  parsing and HTML rendering methods for the best performance. If all of the GFM extensions must be enabled use the _gfm_ methods. For partial support of GFM extensions use the more generic _document_ methods.
 
 ```crystal
-require "cr-cmark-gfm"
+require "cmark"
 
 options = Option.flags(Nobreaks, ValidateUTF8) # deafult is Option::None
 extensions = Extension.flags(Table, Tasklist)  # default is Extension::None
@@ -66,7 +66,7 @@ partially_gfm_node    = Cmark.parse_document(partially_gfm, options, extensions)
 ### Node creation and rendering
 
 ```crystal
-require "cr-cmark-gfm"
+require "cmark"
 include Cmark
 
 contents = NodeMaker.strong
