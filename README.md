@@ -132,7 +132,7 @@ end
 
 # Using the node from the "Node creation and rendering" example
 
-options = Option.flags(Nobreaks, ValidateUTF8) # deafult is Option::None
+options = Option.flags(Nobreaks, ValidateUTF8) # default is Option::None
 extensions = Extension.flags(Table, Tasklist) # default is Extension::None
 
 renderer = MyHTMLRenderer.new(options, extensions)
