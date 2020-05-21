@@ -354,7 +354,7 @@ describe Node do
     describe "#last_child" do
       it "returns the last child if available" do
         last_child = paragraph.last_child.not_nil!
-        last_child.type.should be_a(NodeType::Text)
+        last_child.type.should eq(NodeType::Text)
         literal = last_child.literal
         literal.should eq "!"
       end
@@ -362,14 +362,14 @@ describe Node do
     describe "#next" do
       it "returns the next node if available" do
         next_node = first_text.next.not_nil!
-        next_node.type.should be_a(NodeType::Emph)
+        next_node.type.should eq(NodeType::Emph)
       end
     end
     describe "#previous" do
       it "returns the previous node if available" do
         last_child = paragraph.last_child.not_nil!
         previous_node = last_child.previous.not_nil!
-        previous_node.type.should be_a(NodeType::Emph)
+        previous_node.type.should eq(NodeType::Emph)
       end
     end
     describe "#children" do
