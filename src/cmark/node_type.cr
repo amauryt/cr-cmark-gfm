@@ -12,7 +12,7 @@ module Cmark
   #
   # If the node is _invalid_ it has the type `None`, and all of the previous methods will return false.
   #
-  # Commomark:
+  # Commonmark:
   #  - Block types:
   #     - `Document`
   #     - `BlockQuote`

@@ -304,7 +304,7 @@ describe "HTMLRenderer" do
 
   context "link and image nodes" do
     url = "http://example.com"
-    title = "Got to example"
+    title = "Go to example"
     text_contents = "Example"
 
     describe "#link" do

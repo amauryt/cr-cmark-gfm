@@ -370,7 +370,7 @@ module Cmark
       LibCmark.cmark_node_get_end_column(@node_p)
     end
 
-    # Returns true is the node is a Commonmark autolink, false otherwise.
+    # Returns true if the node is a Commonmark autolink, false otherwise.
     #
     # Beware that this method consolidates adjacent child text nodes if the node is a link.
     #

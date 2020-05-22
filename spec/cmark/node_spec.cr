@@ -644,7 +644,7 @@ describe Node do
             result.should be_false
             second_item.tasklist_item_checked?.should be_false
           end
-          it "checks a unchecked tasklist item if set to true" do
+          it "checks an unchecked tasklist item if set to true" do
             result = first_item.tasklist_item_checked = true
             result.should be_true
             first_item.tasklist_item_checked?.should be_true

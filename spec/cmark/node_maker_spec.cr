@@ -20,7 +20,7 @@ describe NodeMaker do
     describe ".{{name.id}}" do
       it "creates a node of type {{name.id}} with title" do
         url = "http://example.com"
-        title = "Got to example"
+        title = "Go to example"
         node = NodeMaker.{{name.id}}(url, title)
         node.type.should eq NodeType::{{name.id.camelcase}}
         node.url.should eq url
