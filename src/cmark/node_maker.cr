@@ -183,14 +183,13 @@ module Cmark
       table.unlink
       row = col = 0
       EventIterator.new(table).modifiable_node_iterator.each do |table_element|
-        case table_element.type
-        when .table_cell?
+        if table_element.type.table_cell?
           if node = contents[row][col]?
             table_element.append_child(node)
             table_element.table_string_content = node.render_commonmark
           end
           col = col + 1
-        when .table_row?
+        elsif table_element.type.table_row?
           row = row + 1
           col = 0
         end

@@ -21,12 +21,11 @@ describe EventIterator do
       html = String.build do |html|
         iterator.each do |event|
           node = event.node
-          case node.type
-          when .leaf?
+          if node.type.leaf?
             html << node.render_html
-          when .paragraph?
+          elsif node.type.paragraph?
             html << (event.enter? ? "<div>" : "</div>")
-          when .emph?
+          elsif node.type.emph?
             html << (event.enter? ? "<i>" : "</i>")
           end
         end

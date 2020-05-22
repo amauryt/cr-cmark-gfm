@@ -41,10 +41,7 @@ module Cmark
 
     private def has_escape_html_char?(content : String)
       content.each_byte do |byte|
-        case byte
-        when '&', '"', '<', '>'
-          return true
-        end
+        return true if byte === '&' || byte === '"' || byte === '<' || byte === '>'
       end
       false
     end
