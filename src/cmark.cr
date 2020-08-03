@@ -9,11 +9,6 @@ Cmark::LibCmark.cmark_gfm_core_extensions_ensure_registered()
 # If all of the GFM extensions must be enabled use the _gfm_ methods.
 # For partial support of GFM extensions use the more generic _document_ methods.
 module Cmark
-  private macro free_parser_and_reset_arena(parser_name)
-    LibCmark.cmark_parser_free({{parser_name}})
-    LibCmark.cmark_arena_reset()
-  end
-
   # Renders a Commonmark-only text as HTML.
   def self.commonmark_to_html(text : String, options = Option::None) : String
     len = text.bytesize
@@ -28,10 +23,9 @@ module Cmark
 
   # Renders commonmark text as HTML.
   def self.document_to_html(text : String, options = Option::None, extensions = Extension::None) : String
-    allocator = LibCmark.cmark_get_arena_mem_allocator()
+    allocator = LibCmark.cmark_get_default_mem_allocator()
     document = self.parse_document_with_allocator(text, options, extensions, allocator)
     html = document.render_html(options, extensions)
-    LibCmark.cmark_arena_reset()
     html
   end
 
@@ -58,12 +52,12 @@ module Cmark
       ext_name = ext.to_s.downcase
       lib_ext_p = LibCmark.cmark_find_syntax_extension(ext_name)
       if (lib_ext_p.null?)
-        free_parser_and_reset_arena parser_p
+        LibCmark.cmark_parser_free(parser_p)
         raise Cmark::Error.new("Invalid syntax extension `#{ext_name}`.")
       else
         result = LibCmark.cmark_parser_attach_syntax_extension(parser_p, lib_ext_p)
         if result.zero?
-          free_parser_and_reset_arena parser_p
+          LibCmark.cmark_parser_free(parser_p)
           raise Cmark::Error.new("Could not attach syntax extension `#{ext_name}`.")
         end
       end
