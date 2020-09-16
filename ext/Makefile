@@ -4,7 +4,7 @@ SOURCES = $(wildcard $(CMARK)/src/*.c) $(wildcard $(CMARK)/src/*.h)
 all: libcmark-gfm.a
 
 libcmark-gfm.a: $(CMARK) $(SOURCES)
-	cd $(CMARK) && INSTALL_PREFIX=.. make
+	cd $(CMARK) && INSTALL_PREFIX=.. make cmake_build
 	cp $(CMARK)/src/*.h .
 	cp $(CMARK)/extensions/*.h .
 	cp $(CMARK)/build/src/*.h .
