@@ -268,10 +268,11 @@ require "uri"
           cr
           out "</tbody>"
           cr
-          out "</table>"
-          cr
         end
+
         @table_needs_closing_table_body = false
+        cr
+        out "</table>"
         cr
       end
     end
