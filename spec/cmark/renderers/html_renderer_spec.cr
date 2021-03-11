@@ -377,6 +377,20 @@ describe "HTMLRenderer" do
     end
   end
 
+  describe "table with a header only" do
+    markdown = <<-MD
+      | foo | bar | fii | bor |
+      | --- |:--- |:---:| ---:|
+      MD
+    root = Cmark.parse_document(markdown, extensions: Extension::Table)
+    node = root.first_child.not_nil!
+
+    it "renders" do
+      renderer = HTMLRenderer.new
+      renderer.render(node).should eq node.render_html
+    end
+  end
+
   describe "footnote elements" do
     markdown = <<-MD
       This[^one] is a reference; this[^two] one another; this[^one] the same as the first one.
