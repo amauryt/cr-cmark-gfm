@@ -5,7 +5,7 @@ description: Crystal C bindings for cmark-gfm to work with Commonmark and Github
 authors:
   - Amaury Trujillo
 
-crystal: 0.31.1
+crystal: ">= 0.31.1"
 
 scripts:
   postinstall: cd ext && make
