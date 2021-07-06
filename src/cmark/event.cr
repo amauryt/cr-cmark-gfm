@@ -7,7 +7,6 @@ module Cmark
     getter node
 
     protected def initialize(@enter : Bool, @node : Node)
-
     end
 
     # Indicates if node can be modified.

@@ -7,7 +7,6 @@ module Cmark
   # **it is the responsibility of the module user to create and assign the necessary
   # parent and child nodes of the respective created nodes**.
   module NodeMaker
-
     # :nodoc:
     macro maybe_acronym_type(name)
       {% if name.id.starts_with?("html") %}
@@ -119,9 +118,6 @@ module Cmark
       end
     {% end %}
 
-
-
-
     # Makes a node with `NodeType::Table` using a bidimensional array of `Node` for _contents_,
     # with the first array of nodes being its headers.
     #
@@ -170,12 +166,12 @@ module Cmark
       # See https://github.com/github/cmark-gfm/issues/159
       str = String.build do |str|
         str << "|"
-        headers.size.times { str << " |"}
+        headers.size.times { str << " |" }
         str << "\n|"
-        headers.size.times { str << "-|"}
+        headers.size.times { str << "-|" }
         (contents.size - 1).times do
           str << "\n|"
-          headers.size.times { str << " |"}
+          headers.size.times { str << " |" }
         end
       end
       root = Cmark.parse_document(str, extensions: Extension::Table)
@@ -254,9 +250,9 @@ module Cmark
       # Create a dummy table. See the inner comments of `.table`.
       str = String.build do |str|
         str << "|"
-        n_columns.times { str << " |"}
+        n_columns.times { str << " |" }
         str << "\n|"
-        n_columns.times { str << "-|"}
+        n_columns.times { str << "-|" }
       end
       root = Cmark.parse_document(str, extensions: Extension::Table)
       dummy_table = root.first_child.not_nil!
@@ -283,7 +279,7 @@ module Cmark
           found = true if row == previous_table_row
         end
         table.append_child(table_row)
-        after_insertion_rows.each {|row| table.append_child row }
+        after_insertion_rows.each { |row| table.append_child row }
       end
       dummy_table.unlink
       table_row

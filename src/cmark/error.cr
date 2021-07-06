@@ -1,7 +1,6 @@
 module Cmark
-
   # A generic error class for exceptions not handled by known subclasses.
-  class Error <Exception; end
+  class Error < Exception; end
 
   # An error class for exceptions in setting node accessors with incorrect value/node combinations.
   class NodeSetterError < Error

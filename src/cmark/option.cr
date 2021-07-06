@@ -46,9 +46,7 @@ module Cmark
     # Render 'softbreak' elements as spaces.
     Nobreaks = LibCmark::CMARK_OPT_NOBREAKS
 
-
     # === Options affecting parsing
-
 
     # Validate UTF-8 in the input before parsing, replacing illegal
     # sequences with the replacement character U+FFFD.
@@ -68,13 +66,12 @@ module Cmark
     Footnotes = LibCmark::CMARK_OPT_FOOTNOTES
 
     # Only parse strikethroughs if surrounded by exactly 2 tildes.
-    StrikethroughDoubleTilde  = LibCmark::CMARK_OPT_STRIKETHROUGH_DOUBLE_TILDE
+    StrikethroughDoubleTilde = LibCmark::CMARK_OPT_STRIKETHROUGH_DOUBLE_TILDE
 
     # Use style attributes to align table cells instead of align attributes.
     TablePreferStyleAttributes = LibCmark::CMARK_OPT_TABLE_PREFER_STYLE_ATTRIBUTES
 
     # Include the remainder of the info string in code blocks in a separate attribute.
     FullInfoString = LibCmark::CMARK_OPT_FULL_INFO_STRING
-
   end
 end

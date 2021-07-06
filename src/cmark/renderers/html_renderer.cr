@@ -1,13 +1,12 @@
 require "uri"
 
- module Cmark
+module Cmark
   class HTMLRenderer < Renderer
     @footnote_index = 0
     @written_footnote_index = 0
 
     @table_needs_closing_table_body = false
     @table_in_table_header = false
-
 
     def document(node, entering)
       if !entering && @written_footnote_index > 0
@@ -119,7 +118,6 @@ require "uri"
         end
         out "</p>\n"
       end
-
     end
 
     def heading(node, entering)
@@ -255,7 +253,6 @@ require "uri"
       end
     end
 
-
     def table(node, entering)
       if entering
         cr
@@ -350,6 +347,5 @@ require "uri"
       out %(<a href="#fnref#{@footnote_index}" class="footnote-backref">↩</a>)
       true
     end
-
   end
 end

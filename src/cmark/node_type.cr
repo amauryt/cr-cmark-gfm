@@ -105,16 +105,16 @@ module Cmark
     def to_unsafe
       if self.syntax_extension?
         case self
-          when .table?
-            LibCmark.cmark_node_table
-          when .table_row?
-            LibCmark.cmark_node_table_row
-          when .table_cell?
-            LibCmark.cmark_node_table_cell
-          when .strikethrough?
-            LibCmark.cmark_node_strikethrough
-          else
-            LibCmark::NodeType::CMARK_NODE_NONE
+        when .table?
+          LibCmark.cmark_node_table
+        when .table_row?
+          LibCmark.cmark_node_table_row
+        when .table_cell?
+          LibCmark.cmark_node_table_cell
+        when .strikethrough?
+          LibCmark.cmark_node_strikethrough
+        else
+          LibCmark::NodeType::CMARK_NODE_NONE
         end
       else
         LibCmark::NodeType.from_value(self.value)
@@ -122,66 +122,66 @@ module Cmark
     end
 
     # Invalid node
-    None                = LibCmark::NodeType::CMARK_NODE_NONE
+    None = LibCmark::NodeType::CMARK_NODE_NONE
 
     # === CommonMark
 
     # Commonmark / Block / Container
-    Document            = LibCmark::NodeType::CMARK_NODE_DOCUMENT
+    Document = LibCmark::NodeType::CMARK_NODE_DOCUMENT
     # Commonmark / Block / Container
-    BlockQuote          = LibCmark::NodeType::CMARK_NODE_BLOCK_QUOTE
+    BlockQuote = LibCmark::NodeType::CMARK_NODE_BLOCK_QUOTE
     # Commonmark / Block / Container
-    List                = LibCmark::NodeType::CMARK_NODE_LIST
+    List = LibCmark::NodeType::CMARK_NODE_LIST
     # Commonmark / Block / Container
-    Item                = LibCmark::NodeType::CMARK_NODE_ITEM
+    Item = LibCmark::NodeType::CMARK_NODE_ITEM
     # Commonmark / Block / Leaf
-    CodeBlock           = LibCmark::NodeType::CMARK_NODE_CODE_BLOCK
+    CodeBlock = LibCmark::NodeType::CMARK_NODE_CODE_BLOCK
     # Commonmark / Block / Container
-    HTMLBlock           = LibCmark::NodeType::CMARK_NODE_HTML_BLOCK
+    HTMLBlock = LibCmark::NodeType::CMARK_NODE_HTML_BLOCK
     # Commonmark / Block / Container
-    CustomBlock         = LibCmark::NodeType::CMARK_NODE_CUSTOM_BLOCK
+    CustomBlock = LibCmark::NodeType::CMARK_NODE_CUSTOM_BLOCK
     # Commonmark / Block / Container
-    Paragraph           = LibCmark::NodeType::CMARK_NODE_PARAGRAPH
+    Paragraph = LibCmark::NodeType::CMARK_NODE_PARAGRAPH
     # Commonmark / Block / Container
-    Heading             = LibCmark::NodeType::CMARK_NODE_HEADING
+    Heading = LibCmark::NodeType::CMARK_NODE_HEADING
     # Commonmark / Block / Leaf
-    ThematicBreak       = LibCmark::NodeType::CMARK_NODE_THEMATIC_BREAK
+    ThematicBreak = LibCmark::NodeType::CMARK_NODE_THEMATIC_BREAK
     # GFM / Block / Container
-    FootnoteDefinition  = LibCmark::NodeType::CMARK_NODE_FOOTNOTE_DEFINITION
+    FootnoteDefinition = LibCmark::NodeType::CMARK_NODE_FOOTNOTE_DEFINITION
 
     # Commonmark / Inline / Leaf
-    Text                = LibCmark::NodeType::CMARK_NODE_TEXT
+    Text = LibCmark::NodeType::CMARK_NODE_TEXT
     # Commonmark / Inline / Leaf
-    Softbreak           = LibCmark::NodeType::CMARK_NODE_SOFTBREAK
+    Softbreak = LibCmark::NodeType::CMARK_NODE_SOFTBREAK
     # Commonmark / Inline / Leaf
-    Linebreak           = LibCmark::NodeType::CMARK_NODE_LINEBREAK
+    Linebreak = LibCmark::NodeType::CMARK_NODE_LINEBREAK
     # Commonmark / Inline / Leaf
-    Code                = LibCmark::NodeType::CMARK_NODE_CODE
+    Code = LibCmark::NodeType::CMARK_NODE_CODE
     # Commonmark / Inline / Leaf
-    HTMLInline          = LibCmark::NodeType::CMARK_NODE_HTML_INLINE
+    HTMLInline = LibCmark::NodeType::CMARK_NODE_HTML_INLINE
     # Commonmark / Inline / Container
-    CustomInline        = LibCmark::NodeType::CMARK_NODE_CUSTOM_INLINE
+    CustomInline = LibCmark::NodeType::CMARK_NODE_CUSTOM_INLINE
     # Commonmark / Inline / Container
-    Emph                = LibCmark::NodeType::CMARK_NODE_EMPH
+    Emph = LibCmark::NodeType::CMARK_NODE_EMPH
     # Commonmark / Inline / Container
-    Strong              = LibCmark::NodeType::CMARK_NODE_STRONG
+    Strong = LibCmark::NodeType::CMARK_NODE_STRONG
     # Commonmark / Inline / Container
-    Link                = LibCmark::NodeType::CMARK_NODE_LINK
+    Link = LibCmark::NodeType::CMARK_NODE_LINK
     # Commonmark / Inline / Container
-    Image               = LibCmark::NodeType::CMARK_NODE_IMAGE
+    Image = LibCmark::NodeType::CMARK_NODE_IMAGE
     # GFM / Inline / Container
-    FootnoteReference   = LibCmark::NodeType::CMARK_NODE_FOOTNOTE_REFERENCE
+    FootnoteReference = LibCmark::NodeType::CMARK_NODE_FOOTNOTE_REFERENCE
 
     # === GFM Syntax extensions
 
     # GFM / Block / Container
-    Table               = LibCmark::CMARK_NODE_TYPE_BLOCK | 0x0011
+    Table = LibCmark::CMARK_NODE_TYPE_BLOCK | 0x0011
     # GFM / Block / Container
-    TableRow            = LibCmark::CMARK_NODE_TYPE_BLOCK | 0x0012
+    TableRow = LibCmark::CMARK_NODE_TYPE_BLOCK | 0x0012
     # GFM / Block / Container
-    TableCell           = LibCmark::CMARK_NODE_TYPE_BLOCK | 0x0013
+    TableCell = LibCmark::CMARK_NODE_TYPE_BLOCK | 0x0013
 
     # GFM / Inline / Container
-    Strikethrough       = LibCmark::CMARK_NODE_TYPE_INLINE | 0x0011
+    Strikethrough = LibCmark::CMARK_NODE_TYPE_INLINE | 0x0011
   end
 end

@@ -19,5 +19,4 @@ describe Event do
       event.modifiable?.should be_true
     end
   end
-
 end

@@ -2,7 +2,6 @@ require "../spec_helper"
 include Cmark
 
 describe NodeMaker do
-
   # Parameterless makers
   {% for name in [:document, :block_quote, :thematic_break, :softbreak, :linebreak, :emph, :strong, :item] %}
     describe ".{{name.id}}" do
@@ -103,7 +102,7 @@ describe NodeMaker do
         s = 1 + 1
         b = s - 1
       CR
-      node = NodeMaker.code_block(contents ,"crystal")
+      node = NodeMaker.code_block(contents, "crystal")
       node.type.should eq NodeType::CodeBlock
       node.fence_info.should eq "crystal"
       node.literal.should eq contents
@@ -155,7 +154,7 @@ describe NodeMaker do
       table_contents.push [NodeMaker.text("fee"), NodeMaker.text("ber")]
       table = NodeMaker.table(table_contents)
       previous_table_row = table.first_child.not_nil!
-      contents = [NodeMaker.text("fiz"), NodeMaker.text("baz"), ]
+      contents = [NodeMaker.text("fiz"), NodeMaker.text("baz")]
       table_row = NodeMaker.table_row(table, contents, previous_table_row)
 
       it "creates a node of type table row" do
@@ -196,5 +195,4 @@ describe NodeMaker do
       end
     end
   end
-
 end

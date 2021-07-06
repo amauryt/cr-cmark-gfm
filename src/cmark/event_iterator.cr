@@ -1,6 +1,6 @@
 require "./lib_cmark"
-module Cmark
 
+module Cmark
   # An iterator that walks through a tree of nodes, starting from a root node, returning an `Event` with one node at a time,
   # together with information about whether the node is being entered or exited, and if it is modifiable.
   #
@@ -12,7 +12,7 @@ module Cmark
   #
   # One natural application is an HTML renderer, where an ENTER event outputs an open tag and an EXIT
   # event outputs a close tag.
-  # An iterator might also be used to transform an AST in some systematic way, for example, turning all
+  # An iterator might also be used to transform an AST in some systematic way, for example, turning all
   # level-3 headings into regular paragraphs.
   #
   # NOTE: Nodes can be modified only after an EXIT event or an ENTER event for leaf nodes. The convenience
