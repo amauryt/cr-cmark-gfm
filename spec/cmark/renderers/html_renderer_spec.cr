@@ -2,7 +2,6 @@ require "../../spec_helper"
 include Cmark
 
 describe "HTMLRenderer" do
-
   describe "#document" do
     it "renders" do
       node = NodeMaker.document
@@ -138,7 +137,7 @@ describe "HTMLRenderer" do
       renderer.render(node).should eq node.render_html(options)
     end
     it "renders with unsafe option and tagfilter extension" do
-      params = { options: Option::Unsafe, extensions: Extension::Tagfilter }
+      params = {options: Option::Unsafe, extensions: Extension::Tagfilter}
       node = NodeMaker.html_block(contents)
       renderer = HTMLRenderer.new(**params)
       # In cmark-gfm, the closing tags of filtered content in HTML Blocks
@@ -271,7 +270,7 @@ describe "HTMLRenderer" do
       renderer.render(node).should eq node.render_html(extensions: extensions)
     end
     it "renders with unsafe option and tagfilter extension" do
-      params = { options: Option::Unsafe, extensions: Extension::Tagfilter }
+      params = {options: Option::Unsafe, extensions: Extension::Tagfilter}
       node = NodeMaker.html_inline("<title>text</title>")
       renderer = HTMLRenderer.new(**params)
       renderer.render(node).should eq node.render_html(**params)

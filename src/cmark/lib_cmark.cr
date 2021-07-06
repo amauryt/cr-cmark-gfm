@@ -1,29 +1,28 @@
 module Cmark
   @[Link(ldflags: "#{__DIR__}/../../ext/*.a")]
   lib LibCmark
-
     # Options affecting rendering
 
-    CMARK_OPT_DEFAULT = 0
-    CMARK_OPT_SOURCEPOS = (1 << 1)
+    CMARK_OPT_DEFAULT    = 0
+    CMARK_OPT_SOURCEPOS  = (1 << 1)
     CMARK_OPT_HARDBREAKS = (1 << 2)
-    CMARK_OPT_SAFE = (1 << 3) # No effect. "Safe" mode is now the default, see `CMARK_OPT_UNSAFE`.
-    CMARK_OPT_UNSAFE = (1 << 17)
-    CMARK_OPT_NOBREAKS = (1 << 4)
+    CMARK_OPT_SAFE       = (1 << 3) # No effect. "Safe" mode is now the default, see `CMARK_OPT_UNSAFE`.
+    CMARK_OPT_UNSAFE     = (1 << 17)
+    CMARK_OPT_NOBREAKS   = (1 << 4)
 
     # Options affecting parsing
 
-    CMARK_OPT_NORMALIZE = (1 << 8)
-    CMARK_OPT_VALIDATE_UTF8 = (1 << 9)
-    CMARK_OPT_SMART = (1 << 10)
-    CMARK_OPT_GITHUB_PRE_LANG = (1 << 11)
-    CMARK_OPT_LIBERAL_HTML_TAG = (1 << 12)
-    CMARK_OPT_FOOTNOTES = (1 << 13)
-    CMARK_OPT_STRIKETHROUGH_DOUBLE_TILDE = (1 << 14)
+    CMARK_OPT_NORMALIZE                     = (1 << 8)
+    CMARK_OPT_VALIDATE_UTF8                 = (1 << 9)
+    CMARK_OPT_SMART                         = (1 << 10)
+    CMARK_OPT_GITHUB_PRE_LANG               = (1 << 11)
+    CMARK_OPT_LIBERAL_HTML_TAG              = (1 << 12)
+    CMARK_OPT_FOOTNOTES                     = (1 << 13)
+    CMARK_OPT_STRIKETHROUGH_DOUBLE_TILDE    = (1 << 14)
     CMARK_OPT_TABLE_PREFER_STYLE_ATTRIBUTES = (1 << 15)
-    CMARK_OPT_FULL_INFO_STRING = (1 << 16)
+    CMARK_OPT_FULL_INFO_STRING              = (1 << 16)
 
-    MAXBACKTICKS = 80
+    MAXBACKTICKS          = 80
     MAXBACKTICKS_PLUS_ONE = MAXBACKTICKS + 1
 
     # For booleans defined with <stdbool.h>
@@ -42,7 +41,7 @@ module Cmark
       special_inline_chars : CmarkLinkedList*
       name : LibC::Char*
       priv : Void*
-      emphasis: CBool
+      emphasis : CBool
       free_function : CmarkFreeFunc
       get_type_string_func : CmarkGetTypeStringFunc
       can_contain_func : CmarkCanContainFunc
@@ -75,8 +74,8 @@ module Cmark
 
     struct CmarkMem
       c : (LibC::SizeT, LibC::SizeT) -> Void* # Default `calloc`
-      r : (Void*, LibC::SizeT) -> Void* # Default `realloc`
-      f : Void* -> Void # Default `free`
+      r : (Void*, LibC::SizeT) -> Void*       # Default `realloc`
+      f : Void* -> Void                       # Default `free`
     end
 
     struct CmarkList
@@ -124,7 +123,7 @@ module Cmark
       last_child : CmarkNode*
 
       user_data : Void*
-      user_data_free_func: CmarkFreeFunc
+      user_data_free_func : CmarkFreeFunc
 
       start_line : LibC::Int
       start_column : LibC::Int
@@ -134,7 +133,7 @@ module Cmark
       type : UInt16
       flags : UInt16
 
-      extension: CmarkSyntaxExtension*
+      extension : CmarkSyntaxExtension*
 
       _as : CmarkNodeAsUnion
     end
@@ -207,10 +206,10 @@ module Cmark
       mem : CmarkMem*
       input : CmarkChunk
       line : LibC::Int
-      pos: BufsizeT
+      pos : BufsizeT
       block_offset : LibC::Int
       column_offset : LibC::Int
-      refmap : CmarkMap *
+      refmap : CmarkMap*
       last_delim : Delimiter*
       last_bracket : Bracket*
       backticks : BufsizeT[MAXBACKTICKS_PLUS_ONE]
@@ -273,17 +272,16 @@ module Cmark
       ix : LibC::UInt
     end
 
-
     # Simple interface
 
     fun cmark_markdown_to_html(text : LibC::Char*, len : LibC::SizeT, options : LibC::Int) : LibC::Char*
 
     # Custom memory allocator support
-    fun cmark_get_default_mem_allocator() : CmarkMem*
-    fun cmark_get_arena_mem_allocator() : CmarkMem*
-    fun cmark_arena_reset() : Void
+    fun cmark_get_default_mem_allocator : CmarkMem*
+    fun cmark_get_arena_mem_allocator : CmarkMem*
+    fun cmark_arena_reset : Void
 
-    #Linked List
+    # Linked List
 
     fun cmark_llist_append(mem : CmarkMem*, head : CmarkLinkedList*, data : Void*) : CmarkLinkedList*
     fun cmark_llist_free_full(mem : CmarkMem*, head : CmarkLinkedList*, free_func : CmarkFreeFunc)
@@ -292,8 +290,8 @@ module Cmark
     # Creating and Destroying Nodes
 
     fun cmark_node_new(type : NodeType) : CmarkNode*
-    fun cmark_node_new_with_mem(type : NodeType, mem: CmarkMem*) : CmarkNode* # be sure to use the same allocator for every node in a tree!!
-    fun cmark_node_new_with_mem_and_ext(type : NodeType, mem: CmarkMem*, extensions: CmarkSyntaxExtension*) : CmarkNode*
+    fun cmark_node_new_with_mem(type : NodeType, mem : CmarkMem*) : CmarkNode* # be sure to use the same allocator for every node in a tree!!
+    fun cmark_node_new_with_mem_and_ext(type : NodeType, mem : CmarkMem*, extensions : CmarkSyntaxExtension*) : CmarkNode*
     fun cmark_node_free(node : CmarkNode*) : Void
 
     # Tree Traversal
@@ -312,13 +310,13 @@ module Cmark
     fun cmark_iter_get_node(iter : CmarkIter*) : CmarkNode*
     fun cmark_iter_get_event_type(iter : CmarkIter*) : EventType
     fun cmark_iter_get_root(iter : CmarkIter*) : CmarkNode*
-    fun cmark_iter_reset(iter : CmarkIter*, current : CmarkNode*, envent_type: EventType) : Void
+    fun cmark_iter_reset(iter : CmarkIter*, current : CmarkNode*, envent_type : EventType) : Void
 
     # Accessors
 
-    fun cmark_node_get_user_data(node: CmarkNode*) : Void*
-    fun cmark_node_set_user_data(node: CmarkNode*, user_data : Void*) : CBool
-    fun cmark_node_set_user_data_free_func(node: CmarkNode*, free_func : CmarkFreeFunc) : CBool
+    fun cmark_node_get_user_data(node : CmarkNode*) : Void*
+    fun cmark_node_set_user_data(node : CmarkNode*, user_data : Void*) : CBool
+    fun cmark_node_set_user_data_free_func(node : CmarkNode*, free_func : CmarkFreeFunc) : CBool
     fun cmark_node_get_type(node : CmarkNode*) : NodeType
     fun cmark_node_get_type_string(node : CmarkNode*) : LibC::Char*
     fun cmark_node_get_literal(node : CmarkNode*) : LibC::Char*
@@ -364,21 +362,21 @@ module Cmark
     # Parsing
 
     fun cmark_parser_new(options : LibC::Int) : CmarkParser*
-    fun cmark_parser_new_with_mem(options : LibC::Int, mem: CmarkMem*) : CmarkParser*
-    fun cmark_parser_free(parser: CmarkParser*) : Void
-    fun cmark_parser_feed(parser: CmarkParser*, buffer : LibC::Char*, len : LibC::SizeT) : Void
-    fun cmark_parser_finish(parser: CmarkParser*) : CmarkNode*
+    fun cmark_parser_new_with_mem(options : LibC::Int, mem : CmarkMem*) : CmarkParser*
+    fun cmark_parser_free(parser : CmarkParser*) : Void
+    fun cmark_parser_feed(parser : CmarkParser*, buffer : LibC::Char*, len : LibC::SizeT) : Void
+    fun cmark_parser_finish(parser : CmarkParser*) : CmarkNode*
     fun cmark_parse_document(text : LibC::Char*, len : LibC::SizeT, options : LibC::Int) : CmarkNode*
     fun cmark_parse_file(f : FILE*, options : LibC::Int) : CmarkNode*
 
     # Rendering
 
     fun cmark_render_xml(root : CmarkNode*, options : LibC::Int) : LibC::Char*
-    fun cmark_render_html(root : CmarkNode*, options : LibC::Int, extensions: CmarkLinkedList*) : LibC::Char*
-    fun cmark_render_man(root : CmarkNode*, options : LibC::Int, width: LibC::Int) : LibC::Char*
-    fun cmark_render_commonmark(root : CmarkNode*, options : LibC::Int, width: LibC::Int) : LibC::Char*
+    fun cmark_render_html(root : CmarkNode*, options : LibC::Int, extensions : CmarkLinkedList*) : LibC::Char*
+    fun cmark_render_man(root : CmarkNode*, options : LibC::Int, width : LibC::Int) : LibC::Char*
+    fun cmark_render_commonmark(root : CmarkNode*, options : LibC::Int, width : LibC::Int) : LibC::Char*
     fun cmark_render_plaintext(root : CmarkNode*, options : LibC::Int, width : LibC::Int) : LibC::Char*
-    fun cmark_render_latex(root : CmarkNode*, options : LibC::Int, width: LibC::Int) : LibC::Char*
+    fun cmark_render_latex(root : CmarkNode*, options : LibC::Int, width : LibC::Int) : LibC::Char*
 
     # Node containment
 
@@ -386,7 +384,7 @@ module Cmark
 
     # Version information
 
-    fun cmark_version() : LibC::Int
+    fun cmark_version : LibC::Int
 
     # Extension
 
@@ -470,7 +468,7 @@ module Cmark
 
     struct NodeTable
       n_columns : UInt16
-      alignments: UInt8*
+      alignments : UInt8*
     end
 
     struct NodeTableRow
@@ -486,9 +484,9 @@ module Cmark
 
     type CmarkFreeFunc = ((CmarkMem*, Void*) -> Void)*
 
-    type CmarkOpenBlockFunc = ((CmarkSyntaxExtension*, LibC::Int, CmarkParser*, CmarkNode*, LibC::UChar*, LibC::Int)-> CmarkNode*)*
-    type CmarkMatchInlineFunc = ((CmarkSyntaxExtension*, CmarkParser*, CmarkNode*, LibC::UChar, CmarkInlineParser*)-> CmarkNode*)*
-    type CmarkInlineFromDelimFunc = ((CmarkSyntaxExtension*, CmarkParser*, CmarkInlineParser*, Delimiter*, Delimiter*)-> Delimiter*)*
+    type CmarkOpenBlockFunc = ((CmarkSyntaxExtension*, LibC::Int, CmarkParser*, CmarkNode*, LibC::UChar*, LibC::Int) -> CmarkNode*)*
+    type CmarkMatchInlineFunc = ((CmarkSyntaxExtension*, CmarkParser*, CmarkNode*, LibC::UChar, CmarkInlineParser*) -> CmarkNode*)*
+    type CmarkInlineFromDelimFunc = ((CmarkSyntaxExtension*, CmarkParser*, CmarkInlineParser*, Delimiter*, Delimiter*) -> Delimiter*)*
     type CmarkMatchBlockFunc = ((CmarkSyntaxExtension*, CmarkParser*, LibC::UChar*, LibC::Int, CmarkNode*) -> LibC::Int)*
     type CmarkGetTypeStringFunc = ((CmarkSyntaxExtension*, CmarkNode*) -> LibC::Char*)*
     type CmarkCanContainFunc = ((CmarkSyntaxExtension*, CmarkNode*, NodeType) -> LibC::Int)*
@@ -505,30 +503,28 @@ module Cmark
 
     type CmarkMapFreeF = ((CmarkMap*, CmarkMapEntry*) -> Void)*
 
-
     # == GFM Extensions
 
     # Syntax extensions
 
-    fun cmark_gfm_core_extensions_ensure_registered() : Void
+    fun cmark_gfm_core_extensions_ensure_registered : Void
     fun cmark_find_syntax_extension(name : LibC::Char*) : CmarkSyntaxExtension*
-    fun cmark_parser_attach_syntax_extension(parser: CmarkParser*, extension: CmarkSyntaxExtension*): CBool
+    fun cmark_parser_attach_syntax_extension(parser : CmarkParser*, extension : CmarkSyntaxExtension*) : CBool
 
     # Node accessors
 
-    fun cmark_node_get_string_content(node: CmarkNode*) : LibC::Char*
-    fun cmark_node_set_string_content(node: CmarkNode*, content: LibC::Char*) : CBool
+    fun cmark_node_get_string_content(node : CmarkNode*) : LibC::Char*
+    fun cmark_node_set_string_content(node : CmarkNode*, content : LibC::Char*) : CBool
 
     # Extension accessors
 
-    fun cmark_gfm_extensions_get_table_columns(node: CmarkNode*) : UInt16
-    fun cmark_gfm_extensions_set_table_columns(node: CmarkNode*, n_columns : UInt16) : CBool
-    fun cmark_gfm_extensions_get_table_alignments(node: CmarkNode*) : UInt8*
-    fun cmark_gfm_extensions_set_table_alignments(node: CmarkNode*, ncols : UInt16, alignments : UInt8*) : CBool
-    fun cmark_gfm_extensions_get_table_row_is_header(node: CmarkNode*) : CBool
-    fun cmark_gfm_extensions_set_table_row_is_header(node: CmarkNode*, is_header : CBool) : CBool
-    fun cmark_gfm_extensions_get_tasklist_item_checked(node: CmarkNode*) : CBool
-    fun cmark_gfm_extensions_set_tasklist_item_checked(node: CmarkNode*, is_checked : CBool) : CBool
+    fun cmark_gfm_extensions_get_table_columns(node : CmarkNode*) : UInt16
+    fun cmark_gfm_extensions_set_table_columns(node : CmarkNode*, n_columns : UInt16) : CBool
+    fun cmark_gfm_extensions_get_table_alignments(node : CmarkNode*) : UInt8*
+    fun cmark_gfm_extensions_set_table_alignments(node : CmarkNode*, ncols : UInt16, alignments : UInt8*) : CBool
+    fun cmark_gfm_extensions_get_table_row_is_header(node : CmarkNode*) : CBool
+    fun cmark_gfm_extensions_set_table_row_is_header(node : CmarkNode*, is_header : CBool) : CBool
+    fun cmark_gfm_extensions_get_tasklist_item_checked(node : CmarkNode*) : CBool
+    fun cmark_gfm_extensions_set_tasklist_item_checked(node : CmarkNode*, is_checked : CBool) : CBool
   end
-
 end

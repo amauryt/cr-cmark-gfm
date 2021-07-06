@@ -91,5 +91,4 @@ describe NodeType do
       NodeType::None.container?.should be_false
     end
   end
-
 end

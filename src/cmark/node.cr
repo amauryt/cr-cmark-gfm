@@ -408,7 +408,7 @@ module Cmark
     # | foo | bar |
     # | --- | --- |
     # | baz | bim |
-    #```
+    # ```
     # the string content of table is the header row `| foo | bar |`. and the
     # string content of the cells is `foo`, `bar`, `baz`, and `bim`.
     #
@@ -516,18 +516,18 @@ module Cmark
     # It must be called only on nodes with `NodeType::Item`.
     def tasklist_item=(tasklist : Bool) : Bool
       result = case
-        when self.tasklist_item?
-          tasklist ? 1 : LibCmark.cmark_node_set_syntax_extension(@node_p, nil)
-        when self.type.item?
-          if tasklist
-            extension_p = LibCmark.cmark_find_syntax_extension("tasklist")
-            LibCmark.cmark_node_set_syntax_extension(@node_p, extension_p)
-          else
-            1
-          end
-        else
-          0
-      end
+               when self.tasklist_item?
+                 tasklist ? 1 : LibCmark.cmark_node_set_syntax_extension(@node_p, nil)
+               when self.type.item?
+                 if tasklist
+                   extension_p = LibCmark.cmark_find_syntax_extension("tasklist")
+                   LibCmark.cmark_node_set_syntax_extension(@node_p, extension_p)
+                 else
+                   1
+                 end
+               else
+                 0
+               end
       setter_return_value
     end
 
@@ -596,7 +596,7 @@ module Cmark
     def render_html(options = Option::None, extensions = Extension::None) : String
       # Only the tagfilter extension affects HTML rendering, but only if HTML handling is unsafe
       if options.unsafe? && extensions.tagfilter?
-        mem_p = LibCmark.cmark_get_default_mem_allocator()
+        mem_p = LibCmark.cmark_get_default_mem_allocator
         list_p = LibCmark.cmark_list_syntax_extensions(mem_p)
         result = LibCmark.cmark_render_html(@node_p, options, list_p)
         LibCmark.cmark_llist_free(mem_p, list_p)

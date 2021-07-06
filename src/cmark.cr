@@ -1,6 +1,6 @@
 require "./cmark/**"
 
-Cmark::LibCmark.cmark_gfm_core_extensions_ensure_registered()
+Cmark::LibCmark.cmark_gfm_core_extensions_ensure_registered
 
 # This module offers high-level parsing and rendering of markdown content, be it Commonmark-only, full GFM, or partially GFM.
 #
@@ -23,7 +23,7 @@ module Cmark
 
   # Renders commonmark text as HTML.
   def self.document_to_html(text : String, options = Option::None, extensions = Extension::None) : String
-    allocator = LibCmark.cmark_get_default_mem_allocator()
+    allocator = LibCmark.cmark_get_default_mem_allocator
     document = self.parse_document_with_allocator(text, options, extensions, allocator)
     html = document.render_html(options, extensions)
     html
@@ -38,7 +38,7 @@ module Cmark
 
   # Parses a commonmark document text.
   def self.parse_document(text : String, options = Option::None, extensions = Extension::None) : Node
-    allocator = LibCmark.cmark_get_default_mem_allocator()
+    allocator = LibCmark.cmark_get_default_mem_allocator
     self.parse_document_with_allocator(text, options, extensions, allocator)
   end
 
@@ -73,5 +73,4 @@ module Cmark
     LibCmark.cmark_parser_free(parser_p)
     Node.new(node_p)
   end
-
 end

@@ -297,7 +297,6 @@ describe Node do
     end
   end
 
-
   describe "user_data accessors" do
     it "sets and gets user data on node" do
       data = :greetings
@@ -321,7 +320,6 @@ describe Node do
     root = Cmark.parse_commonmark("Hello *world*!")
     paragraph = root.first_child.not_nil!
     first_text = paragraph.first_child.not_nil!
-
 
     # <document xmlns="http://commonmark.org/xml/1.0">
     #   <paragraph>
@@ -404,7 +402,7 @@ describe Node do
         markdown = "<title>Hi</title>\n\nContent"
         raw_root = Cmark.parse_document(markdown, extensions: Extension::Table)
 
-        it "renders as an HTML string without extensions"  do
+        it "renders as an HTML string without extensions" do
           rendering = raw_root.render_html(Option::Unsafe)
           rendering.should eq "<title>Hi</title>\n<p>Content</p>\n"
         end
@@ -449,7 +447,7 @@ describe Node do
       MD
 
       context "table_columns" do
-        root = Cmark.parse_document(markdown, extensions: Cmark::Extension::Table);
+        root = Cmark.parse_document(markdown, extensions: Cmark::Extension::Table)
         table = root.first_child.not_nil!
 
         describe "#table_columns" do
@@ -547,7 +545,6 @@ describe Node do
             last_normal_cell.table_cell_alignment.should eq Alignment::Right
           end
         end
-
       end
     end
 
@@ -560,9 +557,9 @@ describe Node do
       context "tasklist_item" do
         root = Cmark.parse_document(markdown, extensions: Extension::Tasklist)
         list = root.first_child.not_nil!
-        first_item  = list.first_child.not_nil!
+        first_item = list.first_child.not_nil!
         second_item = first_item.next.not_nil!
-        third_item  = list.last_child.not_nil!
+        third_item = list.last_child.not_nil!
 
         describe "tasklist_item?" do
           it "returns true for checked tasklist item" do
@@ -594,7 +591,7 @@ describe Node do
             result.should be_false
             third_item.tasklist_item?.should be_false
           end
-          it "changes a list item into tasklist item if set to true",  do
+          it "changes a list item into tasklist item if set to true" do
             result = third_item.tasklist_item = true
             result.should be_true
             third_item.tasklist_item?.should be_true
@@ -610,9 +607,9 @@ describe Node do
       context "tasklist_item_checked" do
         root = Cmark.parse_document(markdown, extensions: Extension::Tasklist)
         list = root.first_child.not_nil!
-        first_item  = list.first_child.not_nil!
+        first_item = list.first_child.not_nil!
         second_item = first_item.next.not_nil!
-        third_item  = list.last_child.not_nil!
+        third_item = list.last_child.not_nil!
 
         describe "tasklist_item_checked?" do
           it "returns true for checked tasklist item" do
