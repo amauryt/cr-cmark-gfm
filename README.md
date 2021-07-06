@@ -1,8 +1,7 @@
 # cr-cmark-gfm
 
 [![Crystal CI](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml/badge.svg)](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml)
-
-[API Documentation](https://amauryt.github.io/cr-cmark-gfm/)
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://amauryt.github.io/cr-cmark-gfm/)
 
 Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown (v.29). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
 
