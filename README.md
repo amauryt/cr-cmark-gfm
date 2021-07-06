@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/amauryt/cr-cmark-gfm.svg?branch=master)](https://travis-ci.org/amauryt/cr-cmark-gfm)
-
 # cr-cmark-gfm
+
+[![Crystal CI](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml/badge.svg)](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml)
 
 [API Documentation](https://amauryt.github.io/cr-cmark-gfm/)
 
