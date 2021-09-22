@@ -112,9 +112,9 @@ module Cmark
         sourcepos node
         out ">"
       else
-        if node.parent.try &.type.footnote_definition? && node.next.nil?
+        if (node.parent.try &.type.footnote_definition?) && node.next.nil?
           out " "
-          print_footnote_backref
+          print_footnote_backref(node.parent.not_nil!)
         end
         out "</p>\n"
       end
@@ -142,12 +142,13 @@ module Cmark
     def footnote_definition(node, entering)
       if entering
         if @footnote_index.zero?
-          out %(<section class="footnotes">\n<ol>\n)
+          out %(<section class="footnotes" data-footnotes>\n<ol>\n)
         end
-        @footnote_index = @footnote_index + 1
-        out %(<li id="fn#{@footnote_index}">\n)
+        @footnote_index += 1
+        def_literal = escape_html(node.footnote_definition_literal)
+        out %(<li id="fn-#{def_literal}">\n)
       else
-        out "\n" if print_footnote_backref
+        out "\n" if print_footnote_backref(node)
         out "</li>\n"
       end
     end
@@ -246,9 +247,11 @@ module Cmark
 
     def footnote_inline(node, entering)
       if entering
-        literal = node.literal
-        out %(<sup class="footnote-ref"><a href="#fn#{literal}" id="fnref#{literal}">)
-        out literal
+        parent_def_literal = escape_html(node.footnote_parent_definition_literal)
+        out %(<sup class="footnote-ref"><a href="#fn-#{parent_def_literal}" id="fnref-#{parent_def_literal})
+        out %(-#{node.footnote_reference_index}) if node.footnote_reference_index > 1
+        out %(" data-footnote-ref>)
+        out node.literal
         out "</a></sup>"
       end
     end
@@ -341,10 +344,18 @@ module Cmark
       end
     end
 
-    def print_footnote_backref : Bool
+    def print_footnote_backref(node) : Bool
       return false if @written_footnote_index >= @footnote_index
       @written_footnote_index = @footnote_index
-      out %(<a href="#fnref#{@footnote_index}" class="footnote-backref">↩</a>)
+      def_literal = escape_html(node.footnote_definition_literal)
+      out %(<a href="#fnref-#{def_literal}" class="footnote-backref" data-footnote-backref aria-label="Back to content">↩</a>)
+      def_count = node.footnote_definition_count
+      if def_count > 1
+        (2..def_count).each do |i|
+          out %( <a href="#fnref-#{def_literal}-#{i}" class="footnote-backref" data-footnote-backref aria-label="Back to content">↩)
+          out %(<sup class="footnote-ref">#{i}</sup></a>)
+        end
+      end
       true
     end
   end

@@ -67,6 +67,10 @@ module Cmark
   #   - `#tasklist_item=`
   #   - `#tasklist_item_checked?`
   #   - `#tasklist_item_checked=`
+  #   - `#footnote_reference_index`
+  #   - `#footnote_definition_count`
+  #   - `#footnote_definition_literal`
+  #   - `#footnote_parent_definition_literal`
   #
   # - Tree manipulation
   #   - `#unlink`
@@ -540,6 +544,44 @@ module Cmark
     def tasklist_item_checked=(checked : Bool) : Bool
       result = LibCmark.cmark_gfm_extensions_set_tasklist_item_checked(@node_p, checked)
       setter_return_value
+    end
+
+    # Returns the index of the footnote reference.
+    #
+    # Returns 0 if the node is not a footnote reference.
+    def footnote_reference_index : Int32
+      @node_p.value.footnote.ref_ix
+    end
+
+    # Returns the count the footnote definition.
+    #
+    # Returns 0 if the node is not a footnote definition.
+    def footnote_definition_count : Int32
+      @node_p.value.footnote.def_count
+    end
+
+    # Returns the definition literal of the footnote.
+    #
+    # Returns an empty string if the node is not a footnote definition.
+    def footnote_definition_literal : String
+      if self.type.footnote_definition?
+        _as = @node_p.value._as
+        String.new(_as.literal.data, _as.literal.len)
+      else
+        ""
+      end
+    end
+
+    # Returns the definition literal of the footnote for this reference.
+    #
+    # Returns an empty string if the node is not a footnote reference.
+    def footnote_parent_definition_literal : String
+      if self.type.footnote_reference?
+        _as = @node_p.value.parent_footnote_def.value._as
+        String.new(_as.literal.data, _as.literal.len)
+      else
+        ""
+      end
     end
 
     # === Tree Manipulation

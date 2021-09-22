@@ -135,6 +135,10 @@ module Cmark
 
       extension : CmarkSyntaxExtension*
 
+      footnote : CmarkFootnoteUnion
+
+      parent_footnote_def : CmarkNode*
+
       _as : CmarkNodeAsUnion
     end
 
@@ -147,6 +151,11 @@ module Cmark
       custom : CmarkCustom
       html_block_type : LibC::Int
       opaque : Void*
+    end
+
+    union CmarkFootnoteUnion
+      ref_ix : LibC::Int
+      def_count : LibC::Int
     end
 
     struct CmarkLinkedList

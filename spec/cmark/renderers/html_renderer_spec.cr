@@ -403,10 +403,6 @@ describe "HTMLRenderer" do
       renderer = HTMLRenderer.new
       renderer.render(root).should eq root.render_html
     end
-    it "renders with sourcepos" do
-      renderer = HTMLRenderer.new
-      renderer.render(root).should eq root.render_html
-    end
   end
 
   describe "#strikethrough" do
