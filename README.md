@@ -158,3 +158,4 @@ Now that that the Crystal language (subset of) Markdown is no longer part of the
 ## Contributors
 
 - [Amaury Trujillo](https://github.com/amauryt) - creator and maintainer
+- [Anton Maminov](https://github.com/mamantoha) - contributor
