@@ -187,7 +187,7 @@ module Cmark
     end
 
     # Returns the literal string contents of node, or an empty string if none is set.
-    def literal : String?
+    def literal : String
       result = LibCmark.cmark_node_get_literal(@node_p)
       result.null? ? "" : String.new(result)
     end
