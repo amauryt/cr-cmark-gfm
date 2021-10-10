@@ -2,6 +2,18 @@ require "uri"
 
 module Cmark
   class HTMLRenderer < Renderer
+    macro conditional_out_url_encoding
+      {% verbatim do %}
+        if url && (@options.unsafe? || !(UNSAFE_URL_REGEX === url))
+          {% if compare_versions(Crystal::VERSION, "1.2.0") < 0 %}
+            out URI.encode(url)
+          {% else %}
+            out URI.encode_path(url)
+          {% end %}
+        end
+      {% end %}
+    end
+
     @footnote_index = 0
     @written_footnote_index = 0
 
@@ -217,9 +229,7 @@ module Cmark
         url = node.url
         title = node.title
         out %(<a href=")
-        if @options.unsafe? || !(UNSAFE_URL_REGEX === url)
-          out URI.encode(url) unless url.nil?
-        end
+        conditional_out_url_encoding
         unless title.try &.empty?
           out %(" title=")
           out escape_html(title)
@@ -234,9 +244,7 @@ module Cmark
       if entering
         url = node.url
         out %(<img src=")
-        if @options.unsafe? || !(UNSAFE_URL_REGEX === url)
-          out URI.encode(url)
-        end
+        conditional_out_url_encoding
         out %(" alt=")
       else
         title = node.title
