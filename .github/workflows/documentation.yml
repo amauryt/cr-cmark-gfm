@@ -11,7 +11,7 @@ jobs:
       image: crystallang/crystal
     steps:
       - name: Install Crystal
-        uses: oprypin/install-crystal@v1
+        uses: crystal-lang/install-crystal@v1
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Install dependencies
