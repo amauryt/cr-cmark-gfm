@@ -8,7 +8,22 @@ module Cmark
           {% if compare_versions(Crystal::VERSION, "1.2.0") < 0 %}
             out URI.encode(url)
           {% else %}
-            out URI.encode_path(url)
+            uri = URI.parse(url)
+            encoded_uri = String.build do |str|
+              str << uri.scheme
+              str << "://"
+              str << uri.authority
+              str << URI.encode_path(uri.path) if uri.path
+              if uri.query
+                str << "?"
+                str << uri.query
+              end
+              if uri.fragment
+                str << "#"
+                str << uri.fragment
+              end
+            end
+            out "#{encoded_uri}"
           {% end %}
         end
       {% end %}

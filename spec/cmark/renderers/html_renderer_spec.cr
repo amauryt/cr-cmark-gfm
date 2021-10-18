@@ -302,7 +302,7 @@ describe "HTMLRenderer" do
   end
 
   context "link and image nodes" do
-    url = "http://example.com"
+    url = "https://john.doe@www.example.com:123/forum/questions/?tag=networking#top"
     title = "Go to example"
     text_contents = "Example"
 
