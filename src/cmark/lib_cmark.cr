@@ -1,5 +1,5 @@
 module Cmark
-  @[Link(ldflags: "#{__DIR__}/../../ext/*.a")]
+  @[Link(ldflags: "#{__DIR__}/../../ext/libcmark-gfm-extensions.a #{__DIR__}/../../ext/libcmark-gfm.a")]
   lib LibCmark
     # Options affecting rendering
 
