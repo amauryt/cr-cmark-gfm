@@ -5,10 +5,6 @@ all: libcmark-gfm.a
 
 libcmark-gfm.a: $(CMARK) $(SOURCES)
 	cd $(CMARK) && INSTALL_PREFIX=.. make cmake_build
-	cp $(CMARK)/src/*.h .
-	cp $(CMARK)/extensions/*.h .
-	cp $(CMARK)/build/src/*.h .
-	cp $(CMARK)/build/extensions/*.h .
 	cp $(CMARK)/build/src/*.a .
 	cp $(CMARK)/build/extensions/*.a .
 
@@ -19,4 +15,4 @@ clean:
 	rm -rf cmark-*
 
 distclean: clean
-	rm -rf *.a *.h
+	rm -rf *.a
