@@ -3,7 +3,7 @@
 [![Crystal CI](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml/badge.svg)](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml)
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://amauryt.github.io/cr-cmark-gfm/)
 
-Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown (**v0.29.0.gfm.2**). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
+Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown (**v0.29.0.gfm.6**). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
 
 
 Features:
@@ -29,6 +29,7 @@ Add the dependency to your `shard.yml` and then run `shards install`:
 dependencies:
   cmark:
     github: amauryt/cr-cmark-gfm
+    version: ~> 0.1.2
 ```
 
 This will automatically clone the cmark-gfm repository and compile both `libcmark-gfm` and `libcmark-gfm-extensions`, which will be then statically linked.
@@ -141,11 +142,11 @@ html # => <a href="http://example.com" title="My Example"><b>don't click here</b
 
 ## Alternatives
 
-Now that that the Crystal language (subset of) Markdown is no longer part of the public API in the standard library, other alternatives (from which this shard took inspiration) are:
+Other alternatives (from which this shard took inspiration) are:
 
-* [markd](https://github.com/icyleaf/markd): A pure Crystal port of [commonmark.js](https://github.com/jgm/commonmark.js). Compliant to Commonmark v0.27, but it has no GFM support.
-* [crystal-cmark](https://github.com/ysbaddaden/crystal-cmark): Minimal parsing and rendering C bindings with [cmark](https://github.com/commonmark/cmark) v0.29 but without GFM support.
-* [crystal-cmark-gfm](https://github.com/mamantoha/crystal-cmark-gfm): Minimal C bindings for parsing and rendering with [cmark-gfm](https://github.com/github/cmark-gfm) v0.29.0.gfm.0.
+* [markd](https://github.com/icyleaf/markd): A pure Crystal port of [commonmark.js](https://github.com/jgm/commonmark.js). Compliant to Commonmark v0.29, but it has no GFM support.
+* [crystal-cmark](https://github.com/ysbaddaden/crystal-cmark): Minimal parsing and rendering C bindings with [cmark](https://github.com/commonmark/cmark) v0.30.2 but without GFM support.
+* [crystal-cmark-gfm](https://github.com/mamantoha/crystal-cmark-gfm): Minimal C bindings for parsing and rendering with the latest commit of [cmark-gfm](https://github.com/github/cmark-gfm) (v0.29.0.gfm.x)
 
 ## Contributing
 
