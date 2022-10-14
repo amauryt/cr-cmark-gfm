@@ -149,28 +149,36 @@ describe NodeMaker do
     end
 
     describe ".table_row" do
-      table_contents = [] of Array(Node)
-      table_contents.push [NodeMaker.text("foo"), NodeMaker.text("bar")]
-      table_contents.push [NodeMaker.text("fee"), NodeMaker.text("ber")]
-      table = NodeMaker.table(table_contents)
-      previous_table_row = table.first_child.not_nil!
-      contents = [NodeMaker.text("fiz"), NodeMaker.text("baz")]
-      table_row = NodeMaker.table_row(table, contents, previous_table_row)
-
-      it "creates a node of type table row" do
-        table_row.type.should eq NodeType::TableRow
-      end
-      it "creates a table row with the size of contents" do
-        table_row.children.size.should eq 2
-      end
-      it "inserts table row as child of table after previous_row" do
+      it "appends a table row as the last one" do
+        table_contents = [] of Array(Node)
+        table_contents.push [NodeMaker.text("foo"), NodeMaker.text("bar")]
+        table_contents.push [NodeMaker.text("fee"), NodeMaker.text("ber")]
+        table = NodeMaker.table(table_contents)
+        contents = [NodeMaker.text("fiz"), NodeMaker.text("baz")]
+        table_row = NodeMaker.table_row(table, contents)
         rows = table.children
+
+        table_row.type.should eq NodeType::TableRow
+        table_row.children.size.should eq 2
+        table_row.children.each { |cell| cell.table_string_content.should_not be_empty }
+        rows.size.should eq 3
+        rows[2].should eq table_row
+      end
+      it "appends a table row after another row" do
+        table_contents = [] of Array(Node)
+        table_contents.push [NodeMaker.text("foo"), NodeMaker.text("bar")]
+        table_contents.push [NodeMaker.text("fee"), NodeMaker.text("ber")]
+        table = NodeMaker.table(table_contents)
+        previous_table_row = table.first_child.not_nil!
+        contents = [NodeMaker.text("fiz"), NodeMaker.text("baz")]
+        table_row = NodeMaker.table_row(table, contents, previous_table_row)
+        rows = table.children
+
+        table_row.type.should eq NodeType::TableRow
+        table_row.children.size.should eq 2
+        table_row.children.each { |cell| cell.table_string_content.should_not be_empty }
         rows.size.should eq 3
         rows[1].should eq table_row
-      end
-
-      it "sets table_string_content of table and table cells" do
-        table_row.children.each { |cell| cell.table_string_content.should_not be_empty }
       end
     end
 

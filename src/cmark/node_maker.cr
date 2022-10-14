@@ -161,7 +161,7 @@ module Cmark
       raise Cmark::Error.new("Table contents cannot be empty") if contents.empty?
       headers = contents.first
       raise Cmark::Error.new("Table headers cannot be empty") if headers.empty?
-      # Create a dummy markdown table witn the dimensions of contents, as at
+      # Create a dummy markdown table with the dimensions of contents, as at
       # the moment directly creating Table extension nodes is problematic.
       # See https://github.com/github/cmark-gfm/issues/159
       str = String.build do |str|
@@ -176,7 +176,6 @@ module Cmark
       end
       root = Cmark.parse_document(str, extensions: Extension::Table)
       table = root.first_child.not_nil!
-      table.unlink
       row = col = 0
       EventIterator.new(table).modifiable_node_iterator.each do |table_element|
         if table_element.type.table_cell?
@@ -192,6 +191,7 @@ module Cmark
       end
       header_cells = table.first_child.not_nil!.children
       table.table_string_content = "| #{(header_cells.map &.table_string_content).join(" | ")} |"
+      table.unlink
       table
     end
 
@@ -264,8 +264,8 @@ module Cmark
           table_cell.table_string_content = node.render_commonmark
         end
       end
-      table_row.unlink
       if previous_table_row.nil?
+        table_row.unlink
         table.append_child(table_row)
       else
         after_insertion_rows = [] of Node
@@ -278,10 +278,10 @@ module Cmark
           end
           found = true if row == previous_table_row
         end
+        table_row.unlink
         table.append_child(table_row)
         after_insertion_rows.each { |row| table.append_child row }
       end
-      dummy_table.unlink
       table_row
     end
 
