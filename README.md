@@ -3,7 +3,7 @@
 [![Crystal CI](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml/badge.svg)](https://github.com/amauryt/cr-cmark-gfm/actions/workflows/crystal.yml)
 [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://amauryt.github.io/cr-cmark-gfm/)
 
-Crystal C bindings for cmark-gfm, with support for the latest version of Github Flavored Markdown (**v0.29.0.gfm.6**). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
+Crystal C bindings for cmark-gfm, with support for Github Flavored Markdown (**v0.29.0.gfm.8**). For more information regarding the available options and extensions see the official [GFM spec documentation](https://github.github.com/gfm/).
 
 
 Features:
@@ -32,7 +32,7 @@ dependencies:
     version: ~> 0.1.2
 ```
 
-This will automatically clone the cmark-gfm repository and compile both `libcmark-gfm` and `libcmark-gfm-extensions`, which will be then statically linked.
+This will automatically clone the cmark-gfm repository and compile both `libcmark-gfm` and `libcmark-gfm-extensions`, which can then be statically linked.
 
 ## Usage
 
