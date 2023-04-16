@@ -29,7 +29,7 @@ Add the dependency to your `shard.yml` and then run `shards install`:
 dependencies:
   cmark:
     github: amauryt/cr-cmark-gfm
-    version: ~> 0.1.2
+    version: ~> 0.1.3
 ```
 
 This will automatically clone the cmark-gfm repository and compile both `libcmark-gfm` and `libcmark-gfm-extensions`, which can then be statically linked.
