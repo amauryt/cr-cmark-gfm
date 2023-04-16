@@ -138,7 +138,9 @@ module Cmark
 
         if @@instances[@node_p].zero?
           @@instances.delete(@node_p)
-          LibCmark.cmark_node_free(@node_p)
+          unless LibCmark.cmark_node_get_type(@node_p) == LibCmark::NodeType::CMARK_NODE_NONE
+            LibCmark.cmark_node_free(@node_p)
+          end
         end
       end
     end
