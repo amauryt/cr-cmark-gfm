@@ -124,7 +124,11 @@ module Cmark
           raise Cmark::Error.new("Invalid rendering for #{node}.")
         end
       end
-      @output.to_s
+      if @output.bytesize == 0
+        ""
+      else
+        @output.to_s
+      end
     end
   end
 end

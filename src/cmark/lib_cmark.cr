@@ -1,5 +1,12 @@
 module Cmark
-  @[Link(ldflags: "#{__DIR__}/../../ext/libcmark-gfm-extensions.a #{__DIR__}/../../ext/libcmark-gfm.a")]
+  {% if flag?(:interpreted) %}
+    @[Link("cmark-gfm")]
+    @[Link("cmark-gfm-extensions")]
+    @[Link(ldflags: "-L#{__DIR__}/../../ext/")]
+  {% else %}
+    @[Link(ldflags: "#{__DIR__}/../../ext/libcmark-gfm.a")]
+    @[Link(ldflags: "#{__DIR__}/../../ext/libcmark-gfm-extensions.a")]
+  {% end %}
   lib LibCmark
     # Options affecting rendering
 
