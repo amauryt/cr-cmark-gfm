@@ -1,12 +1,14 @@
 CMARK = cmark-gfm
 SOURCES = $(wildcard $(CMARK)/src/*.c) $(wildcard $(CMARK)/src/*.h)
 
-all: libcmark-gfm.a
+all: build
 
-libcmark-gfm.a: $(CMARK) $(SOURCES)
+build: $(CMARK) $(SOURCES)
 	cd $(CMARK) && INSTALL_PREFIX=.. make cmake_build
-	cp $(CMARK)/build/src/*.a .
-	cp $(CMARK)/build/extensions/*.a .
+	cp $(CMARK)/build/src/libcmark-gfm.a .
+	cp $(CMARK)/build/src/libcmark-gfm.so* .
+	cp $(CMARK)/build/extensions/libcmark-gfm-extensions.a .
+	cp $(CMARK)/build/extensions/libcmark-gfm-extensions.so* .
 
 $(CMARK):
 	git clone --depth 1 --branch 0.29.0.gfm.8 https://github.com/github/cmark-gfm.git
@@ -16,3 +18,4 @@ clean:
 
 distclean: clean
 	rm -rf *.a
+	rm -rf *.so*
