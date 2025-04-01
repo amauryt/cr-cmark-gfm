@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.14.0">
+<meta name="crystal_docs.project_version" content="0.1.3">
+<meta name="crystal_docs.project_name" content="cmark">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="cmark">
+  <title>Cmark::Option - cmark 0.1.3</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          cmark
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.3
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="cmark/Cmark" data-name="cmark">
+      <a href="../Cmark.html">Cmark</a>
+      
+        <ul>
+  
+  <li class=" " data-id="cmark/Cmark/Alignment" data-name="cmark::alignment">
+      <a href="../Cmark/Alignment.html">Alignment</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/DelimType" data-name="cmark::delimtype">
+      <a href="../Cmark/DelimType.html">DelimType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Error" data-name="cmark::error">
+      <a href="../Cmark/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Event" data-name="cmark::event">
+      <a href="../Cmark/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/EventIterator" data-name="cmark::eventiterator">
+      <a href="../Cmark/EventIterator.html">EventIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Extension" data-name="cmark::extension">
+      <a href="../Cmark/Extension.html">Extension</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/FencingDetails" data-name="cmark::fencingdetails">
+      <a href="../Cmark/FencingDetails.html">FencingDetails</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/HTMLRenderer" data-name="cmark::htmlrenderer">
+      <a href="../Cmark/HTMLRenderer.html">HTMLRenderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/ListType" data-name="cmark::listtype">
+      <a href="../Cmark/ListType.html">ListType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Node" data-name="cmark::node">
+      <a href="../Cmark/Node.html">Node</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeMaker" data-name="cmark::nodemaker">
+      <a href="../Cmark/NodeMaker.html">NodeMaker</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeSetterError" data-name="cmark::nodesettererror">
+      <a href="../Cmark/NodeSetterError.html">NodeSetterError</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeType" data-name="cmark::nodetype">
+      <a href="../Cmark/NodeType.html">NodeType</a>
+      
+    </li>
+  
+  <li class=" current" data-id="cmark/Cmark/Option" data-name="cmark::option">
+      <a href="../Cmark/Option.html">Option</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Renderer" data-name="cmark::renderer">
+      <a href="../Cmark/Renderer.html">Renderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/TreeManipulationError" data-name="cmark::treemanipulationerror">
+      <a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Cmark::<wbr>Option
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>A flag enum for rendering and parsing options, with <code><a href="../Cmark/Option.html#None">None</a></code> being the default.</p>
+<p>Options affecting rendering:</p>
+<ul>
+<li><code><a href="../Cmark/Option.html#Sourcepos">Sourcepos</a></code></li>
+<li><code><a href="../Cmark/Option.html#Hardbreaks">Hardbreaks</a></code></li>
+<li><code><a href="../Cmark/Option.html#Unsafe">Unsafe</a></code></li>
+<li><code><a href="../Cmark/Option.html#Nobreaks">Nobreaks</a></code></li>
+</ul>
+<p>Options affecting parsing:</p>
+<ul>
+<li><code><a href="../Cmark/Option.html#ValidateUTF8">ValidateUTF8</a></code></li>
+<li><code><a href="../Cmark/Option.html#Smart">Smart</a></code></li>
+<li><code><a href="../Cmark/Option.html#GithubPreLang">GithubPreLang</a></code></li>
+<li><code><a href="../Cmark/Option.html#LiberalHTMLTag">LiberalHTMLTag</a></code></li>
+<li><code><a href="../Cmark/Option.html#Footnotes">Footnotes</a></code></li>
+<li><code><a href="../Cmark/Option.html#StrikethroughDoubleTilde">StrikethroughDoubleTilde</a></code></li>
+<li><code><a href="../Cmark/Option.html#TablePreferStyleAttributes">TablePreferStyleAttributes</a></code></li>
+<li><code><a href="../Cmark/Option.html#FullInfoString">FullInfoString</a></code></li>
+</ul>
+<p>You can easily combine options like this:</p>
+<pre><code class="language-crystal">options <span class="o">=</span> <span class="t">Option</span>.flags(<span class="t">Unsafe</span>, <span class="t">Nobreaks</span>, <span class="t">ValidateUTF8</span>, <span class="t">Smart</span>)</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      cmark/option.cr
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="enum-members" class="anchor" href="#enum-members">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Enum Members
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="Sourcepos">
+        <strong>Sourcepos</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Include a 'data-sourcepos' attribute on all block elements.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Hardbreaks">
+        <strong>Hardbreaks</strong> = <code><span class="n">4</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Render 'softbreak' elements as hard line breaks.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Unsafe">
+        <strong>Unsafe</strong> = <code><span class="n">131072</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Render raw HTML and unsafe links.</p>
+<p>It applies to 'javascript', 'vbscript', 'file', and 'data',
+except for 'image/png', 'image/gif', 'image/jpeg', or
+'image/webp' mime types.</p>
+<p>By default, raw HTML is replaced by a placeholder HTML comment.
+Unsafe links are replaced by empty strings.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Nobreaks">
+        <strong>Nobreaks</strong> = <code><span class="n">16</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Render 'softbreak' elements as spaces.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="ValidateUTF8">
+        <strong>ValidateUTF8</strong> = <code><span class="n">512</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Validate UTF-8 in the input before parsing, replacing illegal
+sequences with the replacement character U+FFFD.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Smart">
+        <strong>Smart</strong> = <code><span class="n">1024</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Convert straight quotes to curly, --- to em dashes, -- to en dashes.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="GithubPreLang">
+        <strong>GithubPreLang</strong> = <code><span class="n">2048</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Use GitHub-style '<pre lang="x">' tags for code blocks instead
+of '<pre><code class="language-x">'.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="LiberalHTMLTag">
+        <strong>LiberalHTMLTag</strong> = <code><span class="n">4096</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Be liberal in interpreting inline HTML tags.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Footnotes">
+        <strong>Footnotes</strong> = <code><span class="n">8192</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Parse footnotes.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="StrikethroughDoubleTilde">
+        <strong>StrikethroughDoubleTilde</strong> = <code><span class="n">16384</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Only parse strikethroughs if surrounded by exactly 2 tildes.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="TablePreferStyleAttributes">
+        <strong>TablePreferStyleAttributes</strong> = <code><span class="n">32768</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Use style attributes to align table cells instead of align attributes.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="FullInfoString">
+        <strong>FullInfoString</strong> = <code><span class="n">65536</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Include the remainder of the info string in code blocks in a separate attribute.</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="None">
+        <strong>None</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="All">
+        <strong>All</strong> = <code><span class="n">261654</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#footnotes%3F-instance-method" class="signature"><strong>#footnotes?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#full_info_string%3F-instance-method" class="signature"><strong>#full_info_string?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#github_pre_lang%3F-instance-method" class="signature"><strong>#github_pre_lang?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hardbreaks%3F-instance-method" class="signature"><strong>#hardbreaks?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#liberal_html_tag%3F-instance-method" class="signature"><strong>#liberal_html_tag?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#nobreaks%3F-instance-method" class="signature"><strong>#nobreaks?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#none%3F-instance-method" class="signature"><strong>#none?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#smart%3F-instance-method" class="signature"><strong>#smart?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sourcepos%3F-instance-method" class="signature"><strong>#sourcepos?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strikethrough_double_tilde%3F-instance-method" class="signature"><strong>#strikethrough_double_tilde?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_prefer_style_attributes%3F-instance-method" class="signature"><strong>#table_prefer_style_attributes?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe%3F-instance-method" class="signature"><strong>#unsafe?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#validate_utf8%3F-instance-method" class="signature"><strong>#validate_utf8?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="footnotes?-instance-method">
+      <div class="signature">
+        
+        def <strong>footnotes?</strong>
+
+        <a class="method-permalink" href="#footnotes%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="full_info_string?-instance-method">
+      <div class="signature">
+        
+        def <strong>full_info_string?</strong>
+
+        <a class="method-permalink" href="#full_info_string%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="github_pre_lang?-instance-method">
+      <div class="signature">
+        
+        def <strong>github_pre_lang?</strong>
+
+        <a class="method-permalink" href="#github_pre_lang%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hardbreaks?-instance-method">
+      <div class="signature">
+        
+        def <strong>hardbreaks?</strong>
+
+        <a class="method-permalink" href="#hardbreaks%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="liberal_html_tag?-instance-method">
+      <div class="signature">
+        
+        def <strong>liberal_html_tag?</strong>
+
+        <a class="method-permalink" href="#liberal_html_tag%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="nobreaks?-instance-method">
+      <div class="signature">
+        
+        def <strong>nobreaks?</strong>
+
+        <a class="method-permalink" href="#nobreaks%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="none?-instance-method">
+      <div class="signature">
+        
+        def <strong>none?</strong>
+
+        <a class="method-permalink" href="#none%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="smart?-instance-method">
+      <div class="signature">
+        
+        def <strong>smart?</strong>
+
+        <a class="method-permalink" href="#smart%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sourcepos?-instance-method">
+      <div class="signature">
+        
+        def <strong>sourcepos?</strong>
+
+        <a class="method-permalink" href="#sourcepos%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strikethrough_double_tilde?-instance-method">
+      <div class="signature">
+        
+        def <strong>strikethrough_double_tilde?</strong>
+
+        <a class="method-permalink" href="#strikethrough_double_tilde%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_prefer_style_attributes?-instance-method">
+      <div class="signature">
+        
+        def <strong>table_prefer_style_attributes?</strong>
+
+        <a class="method-permalink" href="#table_prefer_style_attributes%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe?-instance-method">
+      <div class="signature">
+        
+        def <strong>unsafe?</strong>
+
+        <a class="method-permalink" href="#unsafe%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="validate_utf8?-instance-method">
+      <div class="signature">
+        
+        def <strong>validate_utf8?</strong>
+
+        <a class="method-permalink" href="#validate_utf8%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

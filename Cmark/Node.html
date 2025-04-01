@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.14.0">
+<meta name="crystal_docs.project_version" content="0.1.3">
+<meta name="crystal_docs.project_name" content="cmark">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="cmark">
+  <title>Cmark::Node - cmark 0.1.3</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          cmark
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.3
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="cmark/Cmark" data-name="cmark">
+      <a href="../Cmark.html">Cmark</a>
+      
+        <ul>
+  
+  <li class=" " data-id="cmark/Cmark/Alignment" data-name="cmark::alignment">
+      <a href="../Cmark/Alignment.html">Alignment</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/DelimType" data-name="cmark::delimtype">
+      <a href="../Cmark/DelimType.html">DelimType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Error" data-name="cmark::error">
+      <a href="../Cmark/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Event" data-name="cmark::event">
+      <a href="../Cmark/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/EventIterator" data-name="cmark::eventiterator">
+      <a href="../Cmark/EventIterator.html">EventIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Extension" data-name="cmark::extension">
+      <a href="../Cmark/Extension.html">Extension</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/FencingDetails" data-name="cmark::fencingdetails">
+      <a href="../Cmark/FencingDetails.html">FencingDetails</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/HTMLRenderer" data-name="cmark::htmlrenderer">
+      <a href="../Cmark/HTMLRenderer.html">HTMLRenderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/ListType" data-name="cmark::listtype">
+      <a href="../Cmark/ListType.html">ListType</a>
+      
+    </li>
+  
+  <li class=" current" data-id="cmark/Cmark/Node" data-name="cmark::node">
+      <a href="../Cmark/Node.html">Node</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeMaker" data-name="cmark::nodemaker">
+      <a href="../Cmark/NodeMaker.html">NodeMaker</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeSetterError" data-name="cmark::nodesettererror">
+      <a href="../Cmark/NodeSetterError.html">NodeSetterError</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeType" data-name="cmark::nodetype">
+      <a href="../Cmark/NodeType.html">NodeType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Option" data-name="cmark::option">
+      <a href="../Cmark/Option.html">Option</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Renderer" data-name="cmark::renderer">
+      <a href="../Cmark/Renderer.html">Renderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/TreeManipulationError" data-name="cmark::treemanipulationerror">
+      <a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Cmark::<wbr>Node
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Cmark/Node.html">Cmark::Node</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>A node is a construct of the abstract syntax tree (AST) for a given markdown content.</p>
+<p>At the very minimum every node has a <code><a href="../Cmark/NodeType.html">NodeType</a></code> —available via <code><a href="../Cmark/Node.html#type%3ANodeType-instance-method">#type</a></code>— even when invalid.
+However, given that each type of node has a set of required properties
+—which if are not set may lead to unintended behavior—
+all initializers of <code><a href="../Cmark/Node.html">Node</a></code> are protected. Nodes can be created
+in a safer manner either with the module <code><a href="../Cmark/NodeMaker.html">NodeMaker</a></code>, or with the parsing
+methods of the module<code><a href="../Cmark.html">Cmark</a></code> (which return a node with <code><a href="../Cmark/NodeType.html#Document">NodeType::Document</a></code>).</p>
+<p>Instance methods can be grouped into:</p>
+<ul>
+<li>
+<p>Tree traversal</p>
+<ul>
+<li><code><a href="../Cmark/Node.html#next%3ANode%7CNil-instance-method">#next</a></code></li>
+<li><code><a href="../Cmark/Node.html#previous%3ANode%7CNil-instance-method">#previous</a></code></li>
+<li><code><a href="../Cmark/Node.html#parent%3ANode%7CNil-instance-method">#parent</a></code></li>
+<li><code><a href="../Cmark/Node.html#grandparent%3ANode%7CNil-instance-method">#grandparent</a></code></li>
+<li><code><a href="../Cmark/Node.html#first_child%3ANode%7CNil-instance-method">#first_child</a></code></li>
+<li><code><a href="../Cmark/Node.html#last_child%3ANode%7CNil-instance-method">#last_child</a></code></li>
+<li><code><a href="../Cmark/Node.html#children%3AArray%28Node%29-instance-method">#children</a></code></li>
+</ul>
+</li>
+<li>
+<p>Accessors</p>
+<ul>
+<li><code><a href="../Cmark/Node.html#type%3ANodeType-instance-method">#type</a></code></li>
+<li><code><a href="../Cmark/Node.html#literal%3AString-instance-method">#literal</a></code></li>
+<li><code><a href="../Cmark/Node.html#literal%3D%28literal%3AString%29%3AString-instance-method">#literal=</a></code></li>
+<li><code><a href="../Cmark/Node.html#heading_level%3AInt32-instance-method">#heading_level</a></code></li>
+<li><code><a href="../Cmark/Node.html#heading_level%3D%28heading_level%3AInt32%29%3AInt32-instance-method">#heading_level=</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_type%3AListType-instance-method">#list_type</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_type%3D%28list_type%3AListType%29%3AListType-instance-method">#list_type=</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_delim%3ADelimType-instance-method">#list_delim</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_delim%3D%28list_delim%3ADelimType%29%3ADelimType-instance-method">#list_delim=</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_start%3AInt-instance-method">#list_start</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_start%3D%28list_start%3AInt32%29%3AInt32-instance-method">#list_start=</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_tight%3F%3ABool-instance-method">#list_tight?</a></code></li>
+<li><code><a href="../Cmark/Node.html#list_tight%3D%28tight%3ABool%29%3ABool-instance-method">#list_tight=</a></code></li>
+<li><code><a href="../Cmark/Node.html#fence_info%3AString-instance-method">#fence_info</a></code></li>
+<li><code><a href="../Cmark/Node.html#fence_info%3D%28info%3AString%29%3AString-instance-method">#fence_info=</a></code></li>
+<li><code><a href="../Cmark/Node.html#fencing_details%3AFencingDetails%7CNil-instance-method">#fencing_details</a></code></li>
+<li><code><a href="../Cmark/Node.html#fencing_details%3D%28details%3AFencingDetails%29%3AFencingDetails-instance-method">#fencing_details=</a></code></li>
+<li><code><a href="../Cmark/Node.html#url%3AString-instance-method">#url</a></code></li>
+<li><code><a href="../Cmark/Node.html#url%3D%28url%3AString%29%3AString-instance-method">#url=</a></code></li>
+<li><code><a href="../Cmark/Node.html#title%3AString-instance-method">#title</a></code></li>
+<li><code><a href="../Cmark/Node.html#title%3D%28title%3AString%29%3AString-instance-method">#title=</a></code></li>
+<li><code><a href="../Cmark/Node.html#on_enter%3AString-instance-method">#on_enter</a></code></li>
+<li><code><a href="../Cmark/Node.html#on_enter%3D%28on_enter%3AString%29%3AString-instance-method">#on_enter=</a></code></li>
+<li><code><a href="../Cmark/Node.html#on_exit%3AString-instance-method">#on_exit</a></code></li>
+<li><code><a href="../Cmark/Node.html#on_exit%3D%28on_exit%3AString%29%3AString-instance-method">#on_exit=</a></code></li>
+<li><code><a href="../Cmark/Node.html#user_data%3APointer%28Void%29-instance-method">#user_data</a></code></li>
+<li><code><a href="../Cmark/Node.html#user_data%3D%28user_data%3APointer%28Void%29%29%3APointer%28Void%29-instance-method">#user_data=</a></code></li>
+<li><code><a href="../Cmark/Node.html#start_line%3AInt32-instance-method">#start_line</a></code></li>
+<li><code><a href="../Cmark/Node.html#end_line%3AInt32-instance-method">#end_line</a></code></li>
+<li><code><a href="../Cmark/Node.html#start_column%3AInt32-instance-method">#start_column</a></code></li>
+<li><code><a href="../Cmark/Node.html#end_column%3AInt32-instance-method">#end_column</a></code></li>
+<li><code><a href="../Cmark/Node.html#autolink%3F%3ABool-instance-method">#autolink?</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_string_content%3AString-instance-method">#table_string_content</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_string_content%3D%28content%3AString%29%3AString-instance-method">#table_string_content=</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_columns%3AUInt16-instance-method">#table_columns</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_columns%3D%28n_columns%3AUInt16%29%3AUInt16-instance-method">#table_columns=</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_alignments%3AArray%28Alignment%29-instance-method">#table_alignments</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_alignments%3D%28alignments%3AArray%28Alignment%29%29%3AArray%28Alignment%29-instance-method">#table_alignments=</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_row_header%3F%3ABool-instance-method">#table_row_header?</a></code></li>
+<li><code><a href="../Cmark/Node.html#table_row_header%3D%28header%3ABool%29%3ABool-instance-method">#table_row_header=</a></code></li>
+<li><code><a href="../Cmark/Node.html#tasklist_item%3F%3ABool-instance-method">#tasklist_item?</a></code></li>
+<li><code><a href="../Cmark/Node.html#tasklist_item%3D%28tasklist%3ABool%29%3ABool-instance-method">#tasklist_item=</a></code></li>
+<li><code><a href="../Cmark/Node.html#tasklist_item_checked%3F%3ABool-instance-method">#tasklist_item_checked?</a></code></li>
+<li><code><a href="../Cmark/Node.html#tasklist_item_checked%3D%28checked%3ABool%29%3ABool-instance-method">#tasklist_item_checked=</a></code></li>
+<li><code><a href="../Cmark/Node.html#footnote_reference_index%3AInt32-instance-method">#footnote_reference_index</a></code></li>
+<li><code><a href="../Cmark/Node.html#footnote_definition_count%3AInt32-instance-method">#footnote_definition_count</a></code></li>
+<li><code><a href="../Cmark/Node.html#footnote_definition_literal%3AString-instance-method">#footnote_definition_literal</a></code></li>
+<li><code><a href="../Cmark/Node.html#footnote_parent_definition_literal%3AString-instance-method">#footnote_parent_definition_literal</a></code></li>
+</ul>
+</li>
+<li>
+<p>Tree manipulation</p>
+<ul>
+<li><code><a href="../Cmark/Node.html#unlink-instance-method">#unlink</a></code></li>
+<li><code><a href="../Cmark/Node.html#insert_before%28sibling%3ANode%29-instance-method">#insert_before</a></code></li>
+<li><code><a href="../Cmark/Node.html#insert_after%28sibling%3ANode%29-instance-method">#insert_after</a></code></li>
+<li><code><a href="../Cmark/Node.html#replace_with%28new_node%3ANode%29-instance-method">#replace_with</a></code></li>
+<li><code><a href="../Cmark/Node.html#prepend_child%28child%3ANode%29-instance-method">#prepend_child</a></code></li>
+<li><code><a href="../Cmark/Node.html#append_child%28child%3ANode%29-instance-method">#append_child</a></code></li>
+<li><code><a href="../Cmark/Node.html#consolidate_text_nodes-instance-method">#consolidate_text_nodes</a></code></li>
+</ul>
+</li>
+<li>
+<p>Rendering</p>
+<ul>
+<li><code><a href="../Cmark/Node.html#render_xml%28options%3DOption%3A%3ANone%29%3AString-instance-method">#render_xml</a></code></li>
+<li><code><a href="../Cmark/Node.html#render_html%28options%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3AString-instance-method">#render_html</a></code></li>
+<li><code><a href="../Cmark/Node.html#render_plaintext%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method">#render_plaintext</a></code></li>
+<li><code><a href="../Cmark/Node.html#render_commonmark%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method">#render_commonmark</a></code></li>
+<li><code><a href="../Cmark/Node.html#render_latex%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method">#render_latex</a></code></li>
+<li><code><a href="../Cmark/Node.html#render_man%28options%3DOption%3A%3ANone%2Cwidth%3D80%29%3AString-instance-method">#render_man</a></code></li>
+</ul>
+</li>
+<li>
+<p>Equality</p>
+<ul>
+<li><code><a href="../Cmark/Node.html#%3D%3D%28other%3ANode%29-instance-method">#==</a></code></li>
+</ul>
+</li>
+<li>
+<p>Containment</p>
+<ul>
+<li><code><a href="../Cmark/Node.html#can_contain%3F%28node_type%3ANodeType%29%3ABool-instance-method">#can_contain?</a></code></li>
+</ul>
+</li>
+</ul>
+<p><span class="flag purple">NOTE</span>  The <code><a href="../Cmark/Node.html">Node</a></code> class is a thin wrapper for the node struct of the
+underlying cmark-gfm C library, as such, <strong>familiarity with the
+<a href="https://github.github.com/gfm/">GFM Spec</a> is required for advanced
+node creation, processing, and rendering</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      cmark/node.cr
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%3D%3D%28other%3ANode%29-instance-method" class="signature"><strong>#==</strong>(other : Node)</a>
+        
+          <div class="summary"><p>Returns true if both instances point to the same underlying node structure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#append_child%28child%3ANode%29-instance-method" class="signature"><strong>#append_child</strong>(child : Node)</a>
+        
+          <div class="summary"><p>Adds child to the end of the children of node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#autolink%3F%3ABool-instance-method" class="signature"><strong>#autolink?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns true if the node is a Commonmark autolink, false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#can_contain%3F%28node_type%3ANodeType%29%3ABool-instance-method" class="signature"><strong>#can_contain?</strong>(node_type : NodeType) : Bool</a>
+        
+          <div class="summary"><p>Returns true node can contain <em>node_type</em>, false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#children%3AArray%28Node%29-instance-method" class="signature"><strong>#children</strong> : Array(Node)</a>
+        
+          <div class="summary"><p>Returns children nodes or an empty array if there are none.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#consolidate_text_nodes-instance-method" class="signature"><strong>#consolidate_text_nodes</strong></a>
+        
+          <div class="summary"><p>Consolidates adjacent text nodes.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_column%3AInt32-instance-method" class="signature"><strong>#end_column</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the column on which node ends.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#end_line%3AInt32-instance-method" class="signature"><strong>#end_line</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the line on which node ends.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fence_info%3AString-instance-method" class="signature"><strong>#fence_info</strong> : String</a>
+        
+          <div class="summary"><p>Returns the info string of a fenced code block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fence_info%3D%28info%3AString%29%3AString-instance-method" class="signature"><strong>#fence_info=</strong>(info : String) : String</a>
+        
+          <div class="summary"><p>Sets the info string of a fenced code block; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fencing_details%3AFencingDetails%7CNil-instance-method" class="signature"><strong>#fencing_details</strong> : FencingDetails | Nil</a>
+        
+          <div class="summary"><p>Returns fencing details of a code block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fencing_details%3D%28details%3AFencingDetails%29%3AFencingDetails-instance-method" class="signature"><strong>#fencing_details=</strong>(details : FencingDetails) : FencingDetails</a>
+        
+          <div class="summary"><p>Sets fencing details of a code block; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#first_child%3ANode%7CNil-instance-method" class="signature"><strong>#first_child</strong> : Node | Nil</a>
+        
+          <div class="summary"><p>Returns the first_child node of this node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_definition_count%3AInt32-instance-method" class="signature"><strong>#footnote_definition_count</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the count the footnote definition.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_definition_literal%3AString-instance-method" class="signature"><strong>#footnote_definition_literal</strong> : String</a>
+        
+          <div class="summary"><p>Returns the definition literal of the footnote.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_parent_definition_literal%3AString-instance-method" class="signature"><strong>#footnote_parent_definition_literal</strong> : String</a>
+        
+          <div class="summary"><p>Returns the definition literal of the footnote for this reference.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_reference_index%3AInt32-instance-method" class="signature"><strong>#footnote_reference_index</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the index of the footnote reference.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#grandparent%3ANode%7CNil-instance-method" class="signature"><strong>#grandparent</strong> : Node | Nil</a>
+        
+          <div class="summary"><p>Returns the grandparent node of this node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#heading_level%3AInt32-instance-method" class="signature"><strong>#heading_level</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the heading level of node, or 0 if node is not a heading.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#heading_level%3D%28heading_level%3AInt32%29%3AInt32-instance-method" class="signature"><strong>#heading_level=</strong>(heading_level : Int32) : Int32</a>
+        
+          <div class="summary"><p>Sets the heading level of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#insert_after%28sibling%3ANode%29-instance-method" class="signature"><strong>#insert_after</strong>(sibling : Node)</a>
+        
+          <div class="summary"><p>Inserts sibling after node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#insert_before%28sibling%3ANode%29-instance-method" class="signature"><strong>#insert_before</strong>(sibling : Node)</a>
+        
+          <div class="summary"><p>Inserts sibling before node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#last_child%3ANode%7CNil-instance-method" class="signature"><strong>#last_child</strong> : Node | Nil</a>
+        
+          <div class="summary"><p>Returns the last_child node of this node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_delim%3ADelimType-instance-method" class="signature"><strong>#list_delim</strong> : DelimType</a>
+        
+          <div class="summary"><p>Returns the list delimiter of node, using <code><a href="../Cmark/DelimType.html#None">DelimType::None</a></code> if node is not a list.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_delim%3D%28list_delim%3ADelimType%29%3ADelimType-instance-method" class="signature"><strong>#list_delim=</strong>(list_delim : DelimType) : DelimType</a>
+        
+          <div class="summary"><p>Sets the list delimiter of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_start%3AInt-instance-method" class="signature"><strong>#list_start</strong> : Int</a>
+        
+          <div class="summary"><p>Returns starting number of node, if it is an ordered list, otherwise 0.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_start%3D%28list_start%3AInt32%29%3AInt32-instance-method" class="signature"><strong>#list_start=</strong>(list_start : Int32) : Int32</a>
+        
+          <div class="summary"><p>Sets the list delimiter of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_tight%3D%28tight%3ABool%29%3ABool-instance-method" class="signature"><strong>#list_tight=</strong>(tight : Bool) : Bool</a>
+        
+          <div class="summary"><p>Sets the list tightness of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_tight%3F%3ABool-instance-method" class="signature"><strong>#list_tight?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns true if node is a tight list, or false if loose.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_type%3AListType-instance-method" class="signature"><strong>#list_type</strong> : ListType</a>
+        
+          <div class="summary"><p>Returns the list type of node, using <code><a href="../Cmark/ListType.html#None">ListType::None</a></code> if node is not a list.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_type%3D%28list_type%3AListType%29%3AListType-instance-method" class="signature"><strong>#list_type=</strong>(list_type : ListType) : ListType</a>
+        
+          <div class="summary"><p>Sets the list type of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#literal%3AString-instance-method" class="signature"><strong>#literal</strong> : String</a>
+        
+          <div class="summary"><p>Returns the literal string contents of node, or an empty string if none is set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#literal%3D%28literal%3AString%29%3AString-instance-method" class="signature"><strong>#literal=</strong>(literal : String) : String</a>
+        
+          <div class="summary"><p>Sets the literal string contents of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#next%3ANode%7CNil-instance-method" class="signature"><strong>#next</strong> : Node | Nil</a>
+        
+          <div class="summary"><p>Returns the next node of this node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_enter%3AString-instance-method" class="signature"><strong>#on_enter</strong> : String</a>
+        
+          <div class="summary"><p>Returns the literal <em>on_enter</em> of a custom node or an empty string if unset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_enter%3D%28on_enter%3AString%29%3AString-instance-method" class="signature"><strong>#on_enter=</strong>(on_enter : String) : String</a>
+        
+          <div class="summary"><p>Sets the literal <em>on_enter</em> of a custom node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_exit%3AString-instance-method" class="signature"><strong>#on_exit</strong> : String</a>
+        
+          <div class="summary"><p>Returns the literal <em>on_exit</em> of a custom node or an empty string if unset.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#on_exit%3D%28on_exit%3AString%29%3AString-instance-method" class="signature"><strong>#on_exit=</strong>(on_exit : String) : String</a>
+        
+          <div class="summary"><p>Sets the literal <em>on_exit</em> of a custom node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parent%3ANode%7CNil-instance-method" class="signature"><strong>#parent</strong> : Node | Nil</a>
+        
+          <div class="summary"><p>Returns the parent node of this node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#prepend_child%28child%3ANode%29-instance-method" class="signature"><strong>#prepend_child</strong>(child : Node)</a>
+        
+          <div class="summary"><p>Adds child to the beginning of the children of node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#previous%3ANode%7CNil-instance-method" class="signature"><strong>#previous</strong> : Node | Nil</a>
+        
+          <div class="summary"><p>Returns the previous node of this node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#render_commonmark%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method" class="signature"><strong>#render_commonmark</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">120</span>) : String</a>
+        
+          <div class="summary"><p>Renders node tree as a commonmark string, including GFM extension nodes, if present.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#render_html%28options%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3AString-instance-method" class="signature"><strong>#render_html</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>) : String</a>
+        
+          <div class="summary"><p>Renders node tree as an HTML string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#render_latex%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method" class="signature"><strong>#render_latex</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">120</span>) : String</a>
+        
+          <div class="summary"><p>Renders node tree as a LaTeX string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#render_man%28options%3DOption%3A%3ANone%2Cwidth%3D80%29%3AString-instance-method" class="signature"><strong>#render_man</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">80</span>) : String</a>
+        
+          <div class="summary"><p>Renders node tree as a groff man page string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#render_plaintext%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method" class="signature"><strong>#render_plaintext</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">120</span>) : String</a>
+        
+          <div class="summary"><p>Renders node tree as a plaintext string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#render_xml%28options%3DOption%3A%3ANone%29%3AString-instance-method" class="signature"><strong>#render_xml</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : String</a>
+        
+          <div class="summary"><p>Renders node tree an XML string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#replace_with%28new_node%3ANode%29-instance-method" class="signature"><strong>#replace_with</strong>(new_node : Node)</a>
+        
+          <div class="summary"><p>Replaces node with <em>new_node</em>; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start_column%3AInt32-instance-method" class="signature"><strong>#start_column</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the column on which node begins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start_line%3AInt32-instance-method" class="signature"><strong>#start_line</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the line on which node begins.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_alignments%3AArray%28Alignment%29-instance-method" class="signature"><strong>#table_alignments</strong> : Array(Alignment)</a>
+        
+          <div class="summary"><p>Returns the alignments of columns for the table.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_alignments%3D%28alignments%3AArray%28Alignment%29%29%3AArray%28Alignment%29-instance-method" class="signature"><strong>#table_alignments=</strong>(alignments : Array(Alignment)) : Array(Alignment)</a>
+        
+          <div class="summary"><p>Sets the alignments of columns for the table; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_cell_alignment%3AAlignment-instance-method" class="signature"><strong>#table_cell_alignment</strong> : Alignment</a>
+        
+          <div class="summary"><p>Returns node table alignment or <code><a href="../Cmark/Alignment.html#None">Alignment::None</a></code> if called on a node that is not a table cell.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_columns%3AUInt16-instance-method" class="signature"><strong>#table_columns</strong> : UInt16</a>
+        
+          <div class="summary"><p>Returns the number of columns for the table.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_columns%3D%28n_columns%3AUInt16%29%3AUInt16-instance-method" class="signature"><strong>#table_columns=</strong>(n_columns : UInt16) : UInt16</a>
+        
+          <div class="summary"><p>Sets the number of columns for the table; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_row_header%3D%28header%3ABool%29%3ABool-instance-method" class="signature"><strong>#table_row_header=</strong>(header : Bool) : Bool</a>
+        
+          <div class="summary"><p>Sets a table row as table header.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_row_header%3F%3ABool-instance-method" class="signature"><strong>#table_row_header?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns true if the the node is a header table row, false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_string_content%3AString-instance-method" class="signature"><strong>#table_string_content</strong> : String</a>
+        
+          <div class="summary"><p>Returns the string content of tables and table cells, otherwise an empty string.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_string_content%3D%28content%3AString%29%3AString-instance-method" class="signature"><strong>#table_string_content=</strong>(content : String) : String</a>
+        
+          <div class="summary"><p>Sets the table string content for tables and table cells.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tasklist_item%3D%28tasklist%3ABool%29%3ABool-instance-method" class="signature"><strong>#tasklist_item=</strong>(tasklist : Bool) : Bool</a>
+        
+          <div class="summary"><p>Sets a list item as tasklist item; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tasklist_item%3F%3ABool-instance-method" class="signature"><strong>#tasklist_item?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns true is a node is a tasklist item, false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tasklist_item_checked%3D%28checked%3ABool%29%3ABool-instance-method" class="signature"><strong>#tasklist_item_checked=</strong>(checked : Bool) : Bool</a>
+        
+          <div class="summary"><p>Sets the checked status of tasklist item: on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tasklist_item_checked%3F%3ABool-instance-method" class="signature"><strong>#tasklist_item_checked?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns true is a node is a tasklist_item and is checked, false otherwise.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#title%3AString-instance-method" class="signature"><strong>#title</strong> : String</a>
+        
+          <div class="summary"><p>Returns the title of a link or image node, or an empty string if no title is set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#title%3D%28title%3AString%29%3AString-instance-method" class="signature"><strong>#title=</strong>(title : String) : String</a>
+        
+          <div class="summary"><p>Sets the title of a link or image node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#type%3ANodeType-instance-method" class="signature"><strong>#type</strong> : NodeType</a>
+        
+          <div class="summary"><p>Returns the type of node.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unlink-instance-method" class="signature"><strong>#unlink</strong></a>
+        
+          <div class="summary"><p>Unlinks this node from the AST.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#url%3AString-instance-method" class="signature"><strong>#url</strong> : String</a>
+        
+          <div class="summary"><p>Returns the URL of a link or image node, or an empty string if no URL is set.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#url%3D%28url%3AString%29%3AString-instance-method" class="signature"><strong>#url=</strong>(url : String) : String</a>
+        
+          <div class="summary"><p>Sets the URL of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_data%3APointer%28Void%29-instance-method" class="signature"><strong>#user_data</strong> : Pointer(Void)</a>
+        
+          <div class="summary"><p>Returns the user data of node, which can then be unboxed.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#user_data%3D%28user_data%3APointer%28Void%29%29%3APointer%28Void%29-instance-method" class="signature"><strong>#user_data=</strong>(user_data : Pointer(Void)) : Pointer(Void)</a>
+        
+          <div class="summary"><p>Sets the user data of node, which should be already boxed; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="==(other:Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>==</strong>(other : <a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#%3D%3D%28other%3ANode%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if both instances point to the same underlying node structure.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="append_child(child:Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>append_child</strong>(child : <a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#append_child%28child%3ANode%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Adds child to the end of the children of node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="autolink?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>autolink?</strong> : Bool
+
+        <a class="method-permalink" href="#autolink%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if the node is a Commonmark autolink, false otherwise.</p>
+<p>Beware that this method consolidates adjacent child text nodes if the node is a link.</p>
+<p><span class="flag purple">NOTE</span>  When the GFM autolink extension is enabled, this method will not detect
+<a href="https://github.github.com/gfm/#extended-www-autolink">extended www autolink</a> nor
+<a href="https://github.github.com/gfm/#extended-autolink-path-validation">extended autolink path validation</a>.
+However, <a href="https://github.github.com/gfm/#extended-email-autolink">extended email autolink</a>
+together with simple autolinks constructed without the use of <code>&lt;</code> and <code>&gt;</code> as delimiters will
+be recognized as autolinks.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="can_contain?(node_type:NodeType):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>can_contain?</strong>(node_type : <a href="../Cmark/NodeType.html">NodeType</a>) : Bool
+
+        <a class="method-permalink" href="#can_contain%3F%28node_type%3ANodeType%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true node can contain <em>node_type</em>, false otherwise.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="children:Array(Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>children</strong> : Array(<a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#children%3AArray%28Node%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns children nodes or an empty array if there are none.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="consolidate_text_nodes-instance-method">
+      <div class="signature">
+        
+        def <strong>consolidate_text_nodes</strong>
+
+        <a class="method-permalink" href="#consolidate_text_nodes-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Consolidates adjacent text nodes.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_column:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>end_column</strong> : Int32
+
+        <a class="method-permalink" href="#end_column%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the column on which node ends.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="end_line:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>end_line</strong> : Int32
+
+        <a class="method-permalink" href="#end_line%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the line on which node ends.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fence_info:String-instance-method">
+      <div class="signature">
+        
+        def <strong>fence_info</strong> : String
+
+        <a class="method-permalink" href="#fence_info%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the info string of a fenced code block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fence_info=(info:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>fence_info=</strong>(info : String) : String
+
+        <a class="method-permalink" href="#fence_info%3D%28info%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the info string of a fenced code block; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fencing_details:FencingDetails|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>fencing_details</strong> : <a href="../Cmark/FencingDetails.html">FencingDetails</a> | Nil
+
+        <a class="method-permalink" href="#fencing_details%3AFencingDetails%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns fencing details of a code block.</p>
+<p>Returns nil if called on a node that is not a code block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fencing_details=(details:FencingDetails):FencingDetails-instance-method">
+      <div class="signature">
+        
+        def <strong>fencing_details=</strong>(details : <a href="../Cmark/FencingDetails.html">FencingDetails</a>) : <a href="../Cmark/FencingDetails.html">FencingDetails</a>
+
+        <a class="method-permalink" href="#fencing_details%3D%28details%3AFencingDetails%29%3AFencingDetails-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets fencing details of a code block; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="first_child:Node|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>first_child</strong> : <a href="../Cmark/Node.html">Node</a> | Nil
+
+        <a class="method-permalink" href="#first_child%3ANode%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the first_child node of this node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_definition_count:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_definition_count</strong> : Int32
+
+        <a class="method-permalink" href="#footnote_definition_count%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the count the footnote definition.</p>
+<p>Returns 0 if the node is not a footnote definition.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_definition_literal:String-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_definition_literal</strong> : String
+
+        <a class="method-permalink" href="#footnote_definition_literal%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the definition literal of the footnote.</p>
+<p>Returns an empty string if the node is not a footnote definition.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_parent_definition_literal:String-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_parent_definition_literal</strong> : String
+
+        <a class="method-permalink" href="#footnote_parent_definition_literal%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the definition literal of the footnote for this reference.</p>
+<p>Returns an empty string if the node is not a footnote reference.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_reference_index:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_reference_index</strong> : Int32
+
+        <a class="method-permalink" href="#footnote_reference_index%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the index of the footnote reference.</p>
+<p>Returns 0 if the node is not a footnote reference.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="grandparent:Node|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>grandparent</strong> : <a href="../Cmark/Node.html">Node</a> | Nil
+
+        <a class="method-permalink" href="#grandparent%3ANode%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the grandparent node of this node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="heading_level:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>heading_level</strong> : Int32
+
+        <a class="method-permalink" href="#heading_level%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the heading level of node, or 0 if node is not a heading.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="heading_level=(heading_level:Int32):Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>heading_level=</strong>(heading_level : Int32) : Int32
+
+        <a class="method-permalink" href="#heading_level%3D%28heading_level%3AInt32%29%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the heading level of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="insert_after(sibling:Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>insert_after</strong>(sibling : <a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#insert_after%28sibling%3ANode%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Inserts sibling after node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="insert_before(sibling:Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>insert_before</strong>(sibling : <a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#insert_before%28sibling%3ANode%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Inserts sibling before node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="last_child:Node|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>last_child</strong> : <a href="../Cmark/Node.html">Node</a> | Nil
+
+        <a class="method-permalink" href="#last_child%3ANode%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the last_child node of this node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_delim:DelimType-instance-method">
+      <div class="signature">
+        
+        def <strong>list_delim</strong> : <a href="../Cmark/DelimType.html">DelimType</a>
+
+        <a class="method-permalink" href="#list_delim%3ADelimType-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the list delimiter of node, using <code><a href="../Cmark/DelimType.html#None">DelimType::None</a></code> if node is not a list.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_delim=(list_delim:DelimType):DelimType-instance-method">
+      <div class="signature">
+        
+        def <strong>list_delim=</strong>(list_delim : <a href="../Cmark/DelimType.html">DelimType</a>) : <a href="../Cmark/DelimType.html">DelimType</a>
+
+        <a class="method-permalink" href="#list_delim%3D%28list_delim%3ADelimType%29%3ADelimType-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the list delimiter of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_start:Int-instance-method">
+      <div class="signature">
+        
+        def <strong>list_start</strong> : Int
+
+        <a class="method-permalink" href="#list_start%3AInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns starting number of node, if it is an ordered list, otherwise 0.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_start=(list_start:Int32):Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>list_start=</strong>(list_start : Int32) : Int32
+
+        <a class="method-permalink" href="#list_start%3D%28list_start%3AInt32%29%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the list delimiter of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_tight=(tight:Bool):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>list_tight=</strong>(tight : Bool) : Bool
+
+        <a class="method-permalink" href="#list_tight%3D%28tight%3ABool%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the list tightness of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_tight?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>list_tight?</strong> : Bool
+
+        <a class="method-permalink" href="#list_tight%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if node is a tight list, or false if loose.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_type:ListType-instance-method">
+      <div class="signature">
+        
+        def <strong>list_type</strong> : <a href="../Cmark/ListType.html">ListType</a>
+
+        <a class="method-permalink" href="#list_type%3AListType-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the list type of node, using <code><a href="../Cmark/ListType.html#None">ListType::None</a></code> if node is not a list.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_type=(list_type:ListType):ListType-instance-method">
+      <div class="signature">
+        
+        def <strong>list_type=</strong>(list_type : <a href="../Cmark/ListType.html">ListType</a>) : <a href="../Cmark/ListType.html">ListType</a>
+
+        <a class="method-permalink" href="#list_type%3D%28list_type%3AListType%29%3AListType-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the list type of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="literal:String-instance-method">
+      <div class="signature">
+        
+        def <strong>literal</strong> : String
+
+        <a class="method-permalink" href="#literal%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the literal string contents of node, or an empty string if none is set.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="literal=(literal:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>literal=</strong>(literal : String) : String
+
+        <a class="method-permalink" href="#literal%3D%28literal%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the literal string contents of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="next:Node|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>next</strong> : <a href="../Cmark/Node.html">Node</a> | Nil
+
+        <a class="method-permalink" href="#next%3ANode%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the next node of this node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_enter:String-instance-method">
+      <div class="signature">
+        
+        def <strong>on_enter</strong> : String
+
+        <a class="method-permalink" href="#on_enter%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the literal <em>on_enter</em> of a custom node or an empty string if unset.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_enter=(on_enter:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>on_enter=</strong>(on_enter : String) : String
+
+        <a class="method-permalink" href="#on_enter%3D%28on_enter%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the literal <em>on_enter</em> of a custom node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p>Any children of the node will be rendered after this text.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_exit:String-instance-method">
+      <div class="signature">
+        
+        def <strong>on_exit</strong> : String
+
+        <a class="method-permalink" href="#on_exit%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the literal <em>on_exit</em> of a custom node or an empty string if unset.</p>
+<p>Returns nil if called on a node that is not custom.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="on_exit=(on_exit:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>on_exit=</strong>(on_exit : String) : String
+
+        <a class="method-permalink" href="#on_exit%3D%28on_exit%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the literal <em>on_exit</em> of a custom node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p>Any children of the node will be rendered before this text.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parent:Node|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>parent</strong> : <a href="../Cmark/Node.html">Node</a> | Nil
+
+        <a class="method-permalink" href="#parent%3ANode%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the parent node of this node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="prepend_child(child:Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>prepend_child</strong>(child : <a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#prepend_child%28child%3ANode%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Adds child to the beginning of the children of node; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="previous:Node|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>previous</strong> : <a href="../Cmark/Node.html">Node</a> | Nil
+
+        <a class="method-permalink" href="#previous%3ANode%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the previous node of this node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="render_commonmark(options=Option::None,width=120):String-instance-method">
+      <div class="signature">
+        
+        def <strong>render_commonmark</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">120</span>) : String
+
+        <a class="method-permalink" href="#render_commonmark%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders node tree as a commonmark string, including GFM extension nodes, if present.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="render_html(options=Option::None,extensions=Extension::None):String-instance-method">
+      <div class="signature">
+        
+        def <strong>render_html</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>) : String
+
+        <a class="method-permalink" href="#render_html%28options%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders node tree as an HTML string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="render_latex(options=Option::None,width=120):String-instance-method">
+      <div class="signature">
+        
+        def <strong>render_latex</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">120</span>) : String
+
+        <a class="method-permalink" href="#render_latex%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders node tree as a LaTeX string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="render_man(options=Option::None,width=80):String-instance-method">
+      <div class="signature">
+        
+        def <strong>render_man</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">80</span>) : String
+
+        <a class="method-permalink" href="#render_man%28options%3DOption%3A%3ANone%2Cwidth%3D80%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders node tree as a groff man page string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="render_plaintext(options=Option::None,width=120):String-instance-method">
+      <div class="signature">
+        
+        def <strong>render_plaintext</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, width = <span class="n">120</span>) : String
+
+        <a class="method-permalink" href="#render_plaintext%28options%3DOption%3A%3ANone%2Cwidth%3D120%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders node tree as a plaintext string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="render_xml(options=Option::None):String-instance-method">
+      <div class="signature">
+        
+        def <strong>render_xml</strong>(options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : String
+
+        <a class="method-permalink" href="#render_xml%28options%3DOption%3A%3ANone%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders node tree an XML string.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="replace_with(new_node:Node)-instance-method">
+      <div class="signature">
+        
+        def <strong>replace_with</strong>(new_node : <a href="../Cmark/Node.html">Node</a>)
+
+        <a class="method-permalink" href="#replace_with%28new_node%3ANode%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Replaces node with <em>new_node</em>; raises <code><a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a></code> on failure.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start_column:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>start_column</strong> : Int32
+
+        <a class="method-permalink" href="#start_column%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the column on which node begins.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start_line:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>start_line</strong> : Int32
+
+        <a class="method-permalink" href="#start_line%3AInt32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the line on which node begins.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_alignments:Array(Alignment)-instance-method">
+      <div class="signature">
+        
+        def <strong>table_alignments</strong> : Array(<a href="../Cmark/Alignment.html">Alignment</a>)
+
+        <a class="method-permalink" href="#table_alignments%3AArray%28Alignment%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the alignments of columns for the table.</p>
+<p>Returns an empty array if called on a node that is not a table.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_alignments=(alignments:Array(Alignment)):Array(Alignment)-instance-method">
+      <div class="signature">
+        
+        def <strong>table_alignments=</strong>(alignments : Array(<a href="../Cmark/Alignment.html">Alignment</a>)) : Array(<a href="../Cmark/Alignment.html">Alignment</a>)
+
+        <a class="method-permalink" href="#table_alignments%3D%28alignments%3AArray%28Alignment%29%29%3AArray%28Alignment%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the alignments of columns for the table; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p>It should be called only on table nodes.</p>
+<p>Example for a table node with two columns:</p>
+<pre><code class="language-crystal">node.table_alignments <span class="o">=</span> [<span class="t">Alignment</span><span class="t">::</span><span class="t">Center</span>, <span class="t">Alignment</span><span class="t">::</span><span class="t">Right</span>]</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_cell_alignment:Alignment-instance-method">
+      <div class="signature">
+        
+        def <strong>table_cell_alignment</strong> : <a href="../Cmark/Alignment.html">Alignment</a>
+
+        <a class="method-permalink" href="#table_cell_alignment%3AAlignment-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns node table alignment or <code><a href="../Cmark/Alignment.html#None">Alignment::None</a></code> if called on a node that is not a table cell.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_columns:UInt16-instance-method">
+      <div class="signature">
+        
+        def <strong>table_columns</strong> : UInt16
+
+        <a class="method-permalink" href="#table_columns%3AUInt16-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the number of columns for the table.</p>
+<p>Returns 0 if called on a node that is not a table.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_columns=(n_columns:UInt16):UInt16-instance-method">
+      <div class="signature">
+        
+        def <strong>table_columns=</strong>(n_columns : UInt16) : UInt16
+
+        <a class="method-permalink" href="#table_columns%3D%28n_columns%3AUInt16%29%3AUInt16-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the number of columns for the table; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p>It must be called only on table and table row nodes that already have defined columns.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_row_header=(header:Bool):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>table_row_header=</strong>(header : Bool) : Bool
+
+        <a class="method-permalink" href="#table_row_header%3D%28header%3ABool%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets a table row as table header.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_row_header?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>table_row_header?</strong> : Bool
+
+        <a class="method-permalink" href="#table_row_header%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true if the the node is a header table row, false otherwise.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_string_content:String-instance-method">
+      <div class="signature">
+        
+        def <strong>table_string_content</strong> : String
+
+        <a class="method-permalink" href="#table_string_content%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the string content of tables and table cells, otherwise an empty string.</p>
+<p>With the following table</p>
+<pre><code class="language-text">| foo | bar |
+| --- | --- |
+| baz | bim |</code></pre>
+<p>the string content of table is the header row <code>| foo | bar |</code>. and the
+string content of the cells is <code>foo</code>, <code>bar</code>, <code>baz</code>, and <code>bim</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_string_content=(content:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>table_string_content=</strong>(content : String) : String
+
+        <a class="method-permalink" href="#table_string_content%3D%28content%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the table string content for tables and table cells.</p>
+<p>Beware of setting incorrect string content.
+See <code><a href="../Cmark/Node.html#table_string_content%3AString-instance-method">#table_string_content</a></code> for more information.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tasklist_item=(tasklist:Bool):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>tasklist_item=</strong>(tasklist : Bool) : Bool
+
+        <a class="method-permalink" href="#tasklist_item%3D%28tasklist%3ABool%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets a list item as tasklist item; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p>It must be called only on nodes with <code><a href="../Cmark/NodeType.html#Item">NodeType::Item</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tasklist_item?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>tasklist_item?</strong> : Bool
+
+        <a class="method-permalink" href="#tasklist_item%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true is a node is a tasklist item, false otherwise.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tasklist_item_checked=(checked:Bool):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>tasklist_item_checked=</strong>(checked : Bool) : Bool
+
+        <a class="method-permalink" href="#tasklist_item_checked%3D%28checked%3ABool%29%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the checked status of tasklist item: on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tasklist_item_checked?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>tasklist_item_checked?</strong> : Bool
+
+        <a class="method-permalink" href="#tasklist_item_checked%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns true is a node is a tasklist_item and is checked, false otherwise.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="title:String-instance-method">
+      <div class="signature">
+        
+        def <strong>title</strong> : String
+
+        <a class="method-permalink" href="#title%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the title of a link or image node, or an empty string if no title is set.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="title=(title:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>title=</strong>(title : String) : String
+
+        <a class="method-permalink" href="#title%3D%28title%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the title of a link or image node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="type:NodeType-instance-method">
+      <div class="signature">
+        
+        def <strong>type</strong> : <a href="../Cmark/NodeType.html">NodeType</a>
+
+        <a class="method-permalink" href="#type%3ANodeType-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the type of node.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unlink-instance-method">
+      <div class="signature">
+        
+        def <strong>unlink</strong>
+
+        <a class="method-permalink" href="#unlink-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Unlinks this node from the AST.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="url:String-instance-method">
+      <div class="signature">
+        
+        def <strong>url</strong> : String
+
+        <a class="method-permalink" href="#url%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the URL of a link or image node, or an empty string if no URL is set.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="url=(url:String):String-instance-method">
+      <div class="signature">
+        
+        def <strong>url=</strong>(url : String) : String
+
+        <a class="method-permalink" href="#url%3D%28url%3AString%29%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the URL of node; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p>It must be called only on link or image nodes.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_data:Pointer(Void)-instance-method">
+      <div class="signature">
+        
+        def <strong>user_data</strong> : Pointer(Void)
+
+        <a class="method-permalink" href="#user_data%3APointer%28Void%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the user data of node, which can then be unboxed.</p>
+<p>Example:</p>
+<pre><code class="language-crystal">node <span class="o">=</span> <span class="t">NodeMaker</span>.text(<span class="s">&quot;Hi&quot;</span>)
+node.user_data.null? <span class="c"># =&gt; true</span>
+node.user_data <span class="o">=</span> <span class="t">Box</span>.box(<span class="n">:greetings</span>)
+user_data <span class="o">=</span> <span class="t">Box</span>(<span class="t">Symbol</span>).unbox(node.user_data)
+user_data <span class="c"># =&gt; :grettings</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="user_data=(user_data:Pointer(Void)):Pointer(Void)-instance-method">
+      <div class="signature">
+        
+        def <strong>user_data=</strong>(user_data : Pointer(Void)) : Pointer(Void)
+
+        <a class="method-permalink" href="#user_data%3D%28user_data%3APointer%28Void%29%29%3APointer%28Void%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Sets the user data of node, which should be already boxed; on failure it raises <code><a href="../Cmark/NodeSetterError.html">NodeSetterError</a></code>.</p>
+<p><span class="flag purple">NOTE</span>  <em>user_data</em> must be boxed into the node struct of the C library; see <code><a href="../Cmark/Node.html#user_data%3APointer%28Void%29-instance-method">#user_data</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

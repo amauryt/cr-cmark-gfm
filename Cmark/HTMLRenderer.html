@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.14.0">
+<meta name="crystal_docs.project_version" content="0.1.3">
+<meta name="crystal_docs.project_name" content="cmark">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="cmark">
+  <title>Cmark::HTMLRenderer - cmark 0.1.3</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          cmark
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.3
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="cmark/Cmark" data-name="cmark">
+      <a href="../Cmark.html">Cmark</a>
+      
+        <ul>
+  
+  <li class=" " data-id="cmark/Cmark/Alignment" data-name="cmark::alignment">
+      <a href="../Cmark/Alignment.html">Alignment</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/DelimType" data-name="cmark::delimtype">
+      <a href="../Cmark/DelimType.html">DelimType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Error" data-name="cmark::error">
+      <a href="../Cmark/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Event" data-name="cmark::event">
+      <a href="../Cmark/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/EventIterator" data-name="cmark::eventiterator">
+      <a href="../Cmark/EventIterator.html">EventIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Extension" data-name="cmark::extension">
+      <a href="../Cmark/Extension.html">Extension</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/FencingDetails" data-name="cmark::fencingdetails">
+      <a href="../Cmark/FencingDetails.html">FencingDetails</a>
+      
+    </li>
+  
+  <li class=" current" data-id="cmark/Cmark/HTMLRenderer" data-name="cmark::htmlrenderer">
+      <a href="../Cmark/HTMLRenderer.html">HTMLRenderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/ListType" data-name="cmark::listtype">
+      <a href="../Cmark/ListType.html">ListType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Node" data-name="cmark::node">
+      <a href="../Cmark/Node.html">Node</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeMaker" data-name="cmark::nodemaker">
+      <a href="../Cmark/NodeMaker.html">NodeMaker</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeSetterError" data-name="cmark::nodesettererror">
+      <a href="../Cmark/NodeSetterError.html">NodeSetterError</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeType" data-name="cmark::nodetype">
+      <a href="../Cmark/NodeType.html">NodeType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Option" data-name="cmark::option">
+      <a href="../Cmark/Option.html">Option</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Renderer" data-name="cmark::renderer">
+      <a href="../Cmark/Renderer.html">Renderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/TreeManipulationError" data-name="cmark::treemanipulationerror">
+      <a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Cmark::<wbr>HTMLRenderer
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Cmark/HTMLRenderer.html">Cmark::HTMLRenderer</a></li><li class="superclass"><a href="../Cmark/Renderer.html">Cmark::Renderer</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      cmark/renderers/html_renderer.cr
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#conditional_out_url_encoding-macro" class="signature"><strong>conditional_out_url_encoding</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#block_quote%28node%2Centering%29-instance-method" class="signature"><strong>#block_quote</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code%28node%29-instance-method" class="signature"><strong>#code</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code_block%28node%29-instance-method" class="signature"><strong>#code_block</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#custom_block%28node%2Centering%29-instance-method" class="signature"><strong>#custom_block</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#custom_inline%28node%2Centering%29-instance-method" class="signature"><strong>#custom_inline</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document%28node%2Centering%29-instance-method" class="signature"><strong>#document</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#emph%28node%2Centering%29-instance-method" class="signature"><strong>#emph</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_definition%28node%2Centering%29-instance-method" class="signature"><strong>#footnote_definition</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_inline%28node%2Centering%29-instance-method" class="signature"><strong>#footnote_inline</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#heading%28node%2Centering%29-instance-method" class="signature"><strong>#heading</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#html_block%28node%29-instance-method" class="signature"><strong>#html_block</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#html_inline%28node%29-instance-method" class="signature"><strong>#html_inline</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#image%28node%2Centering%29-instance-method" class="signature"><strong>#image</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#item%28node%2Centering%29-instance-method" class="signature"><strong>#item</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#linebreak%28node%29-instance-method" class="signature"><strong>#linebreak</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#link%28node%2Centering%29-instance-method" class="signature"><strong>#link</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list%28node%2Centering%29-instance-method" class="signature"><strong>#list</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#paragraph%28node%2Centering%29-instance-method" class="signature"><strong>#paragraph</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#print_footnote_backref%28node%29%3ABool-instance-method" class="signature"><strong>#print_footnote_backref</strong>(node) : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#softbreak%28node%29-instance-method" class="signature"><strong>#softbreak</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sourcepos%28node%29-instance-method" class="signature"><strong>#sourcepos</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strikethrough%28node%2Centering%29-instance-method" class="signature"><strong>#strikethrough</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strong%28node%2Centering%29-instance-method" class="signature"><strong>#strong</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table%28node%2Centering%29-instance-method" class="signature"><strong>#table</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_cell%28node%2Centering%29-instance-method" class="signature"><strong>#table_cell</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_row%28node%2Centering%29-instance-method" class="signature"><strong>#table_row</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tasklist_item_inner%28node%2Centering%29-instance-method" class="signature"><strong>#tasklist_item_inner</strong>(node, entering)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text%28node%29-instance-method" class="signature"><strong>#text</strong>(node)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#thematic_break%28node%29-instance-method" class="signature"><strong>#thematic_break</strong>(node)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+  <h3>Instance methods inherited from class <code><a href="../Cmark/Renderer.html">Cmark::Renderer</a></code></h3>
+  
+  
+    <a href="../Cmark/Renderer.html#cr-instance-method" class="tooltip">
+      <span>cr</span>
+    cr</a>, 
+    
+  
+    <a href="../Cmark/Renderer.html#escape_html%28content%3AString%29-instance-method" class="tooltip">
+      <span>escape_html(content : String)</span>
+    escape_html</a>, 
+    
+  
+    <a href="../Cmark/Renderer.html#filter_tags%28content%3AString%29-instance-method" class="tooltip">
+      <span>filter_tags(content : String)</span>
+    filter_tags</a>, 
+    
+  
+    <a href="../Cmark/Renderer.html#out%28str%29-instance-method" class="tooltip">
+      <span>out(str)</span>
+    out</a>, 
+    
+  
+    <a href="../Cmark/Renderer.html#render%28root%3ANode%29%3AString-instance-method" class="tooltip">
+      <span>render(root : Node) : String</span>
+    render</a>
+    
+  
+
+
+    
+
+  <h3>Constructor methods inherited from class <code><a href="../Cmark/Renderer.html">Cmark::Renderer</a></code></h3>
+  
+  
+    <a href="../Cmark/Renderer.html#new%28options%3ACmark%3A%3AOption%3DOption%3A%3ANone%2Cextensions%3ACmark%3A%3AExtension%3DExtension%3A%3ANone%29-class-method" class="tooltip">
+      <span>new(options : Cmark::Option = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions : Cmark::Extension = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>)</span>
+    new</a>
+    
+  
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+  <h2>
+    <a id="macro-detail" class="anchor" href="#macro-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Detail
+  </h2>
+  
+    <div class="entry-detail" id="conditional_out_url_encoding-macro">
+      <div class="signature">
+        
+        macro <strong>conditional_out_url_encoding</strong>
+
+        <a class="method-permalink" href="#conditional_out_url_encoding-macro">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="block_quote(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>block_quote</strong>(node, entering)
+
+        <a class="method-permalink" href="#block_quote%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>code</strong>(node)
+
+        <a class="method-permalink" href="#code%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code_block(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>code_block</strong>(node)
+
+        <a class="method-permalink" href="#code_block%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="custom_block(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>custom_block</strong>(node, entering)
+
+        <a class="method-permalink" href="#custom_block%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="custom_inline(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>custom_inline</strong>(node, entering)
+
+        <a class="method-permalink" href="#custom_inline%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>document</strong>(node, entering)
+
+        <a class="method-permalink" href="#document%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="emph(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>emph</strong>(node, entering)
+
+        <a class="method-permalink" href="#emph%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_definition(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_definition</strong>(node, entering)
+
+        <a class="method-permalink" href="#footnote_definition%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_inline(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_inline</strong>(node, entering)
+
+        <a class="method-permalink" href="#footnote_inline%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="heading(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>heading</strong>(node, entering)
+
+        <a class="method-permalink" href="#heading%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="html_block(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>html_block</strong>(node)
+
+        <a class="method-permalink" href="#html_block%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="html_inline(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>html_inline</strong>(node)
+
+        <a class="method-permalink" href="#html_inline%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="image(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>image</strong>(node, entering)
+
+        <a class="method-permalink" href="#image%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="item(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>item</strong>(node, entering)
+
+        <a class="method-permalink" href="#item%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="linebreak(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>linebreak</strong>(node)
+
+        <a class="method-permalink" href="#linebreak%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="link(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>link</strong>(node, entering)
+
+        <a class="method-permalink" href="#link%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>list</strong>(node, entering)
+
+        <a class="method-permalink" href="#list%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="paragraph(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>paragraph</strong>(node, entering)
+
+        <a class="method-permalink" href="#paragraph%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="print_footnote_backref(node):Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>print_footnote_backref</strong>(node) : Bool
+
+        <a class="method-permalink" href="#print_footnote_backref%28node%29%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="softbreak(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>softbreak</strong>(node)
+
+        <a class="method-permalink" href="#softbreak%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sourcepos(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>sourcepos</strong>(node)
+
+        <a class="method-permalink" href="#sourcepos%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strikethrough(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>strikethrough</strong>(node, entering)
+
+        <a class="method-permalink" href="#strikethrough%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strong(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>strong</strong>(node, entering)
+
+        <a class="method-permalink" href="#strong%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>table</strong>(node, entering)
+
+        <a class="method-permalink" href="#table%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_cell(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>table_cell</strong>(node, entering)
+
+        <a class="method-permalink" href="#table_cell%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_row(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>table_row</strong>(node, entering)
+
+        <a class="method-permalink" href="#table_row%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tasklist_item_inner(node,entering)-instance-method">
+      <div class="signature">
+        
+        def <strong>tasklist_item_inner</strong>(node, entering)
+
+        <a class="method-permalink" href="#tasklist_item_inner%28node%2Centering%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>text</strong>(node)
+
+        <a class="method-permalink" href="#text%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="thematic_break(node)-instance-method">
+      <div class="signature">
+        
+        def <strong>thematic_break</strong>(node)
+
+        <a class="method-permalink" href="#thematic_break%28node%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

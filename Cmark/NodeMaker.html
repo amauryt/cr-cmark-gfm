@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.14.0">
+<meta name="crystal_docs.project_version" content="0.1.3">
+<meta name="crystal_docs.project_name" content="cmark">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="cmark">
+  <title>Cmark::NodeMaker - cmark 0.1.3</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          cmark
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.3
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="cmark/Cmark" data-name="cmark">
+      <a href="../Cmark.html">Cmark</a>
+      
+        <ul>
+  
+  <li class=" " data-id="cmark/Cmark/Alignment" data-name="cmark::alignment">
+      <a href="../Cmark/Alignment.html">Alignment</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/DelimType" data-name="cmark::delimtype">
+      <a href="../Cmark/DelimType.html">DelimType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Error" data-name="cmark::error">
+      <a href="../Cmark/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Event" data-name="cmark::event">
+      <a href="../Cmark/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/EventIterator" data-name="cmark::eventiterator">
+      <a href="../Cmark/EventIterator.html">EventIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Extension" data-name="cmark::extension">
+      <a href="../Cmark/Extension.html">Extension</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/FencingDetails" data-name="cmark::fencingdetails">
+      <a href="../Cmark/FencingDetails.html">FencingDetails</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/HTMLRenderer" data-name="cmark::htmlrenderer">
+      <a href="../Cmark/HTMLRenderer.html">HTMLRenderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/ListType" data-name="cmark::listtype">
+      <a href="../Cmark/ListType.html">ListType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Node" data-name="cmark::node">
+      <a href="../Cmark/Node.html">Node</a>
+      
+    </li>
+  
+  <li class=" current" data-id="cmark/Cmark/NodeMaker" data-name="cmark::nodemaker">
+      <a href="../Cmark/NodeMaker.html">NodeMaker</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeSetterError" data-name="cmark::nodesettererror">
+      <a href="../Cmark/NodeSetterError.html">NodeSetterError</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeType" data-name="cmark::nodetype">
+      <a href="../Cmark/NodeType.html">NodeType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Option" data-name="cmark::option">
+      <a href="../Cmark/Option.html">Option</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Renderer" data-name="cmark::renderer">
+      <a href="../Cmark/Renderer.html">Renderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/TreeManipulationError" data-name="cmark::treemanipulationerror">
+      <a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Cmark::<wbr>NodeMaker
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>A convenience class to safely create <code><a href="../Cmark/Node.html">Node</a></code> instances with a predefined <code><a href="../Cmark/NodeType.html">NodeType</a></code>.</p>
+<p><span class="flag purple">NOTE</span>  The methods herein only create the given node(s) <em>per se</em>,
+<strong>it is the responsibility of the module user to create and assign the necessary
+parent and child nodes of the respective created nodes</strong>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      cmark/node_maker.cr
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#block_quote%3ANode-class-method" class="signature"><strong>.block_quote</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#BlockQuote">NodeType::BlockQuote</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code%28literal%3AString%29%3ANode-class-method" class="signature"><strong>.code</strong>(literal : String) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Code">NodeType::Code</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code_block%28contents%3AString%2Cfence_info%3AString%3D%22%22%29-class-method" class="signature"><strong>.code_block</strong>(contents : String, fence_info : String = <span class="s">&quot;&quot;</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#custom_block%28on_enter%3AString%3D%22%22%2Con_exit%3AString%3D%22%22%29-class-method" class="signature"><strong>.custom_block</strong>(on_enter : String = <span class="s">&quot;&quot;</span>, on_exit : String = <span class="s">&quot;&quot;</span>)</a>
+        
+          <div class="summary"><p>Mades a node with <code>NodeType::CUSTOM_BLOCK</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#custom_inline%28on_enter%3AString%3D%22%22%2Con_exit%3AString%3D%22%22%29-class-method" class="signature"><strong>.custom_inline</strong>(on_enter : String = <span class="s">&quot;&quot;</span>, on_exit : String = <span class="s">&quot;&quot;</span>)</a>
+        
+          <div class="summary"><p>Mades a node with <code>NodeType::CUSTOM_INLINE</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document%3ANode-class-method" class="signature"><strong>.document</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Document">NodeType::Document</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#emph%3ANode-class-method" class="signature"><strong>.emph</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Emph">NodeType::Emph</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#heading%28level%3AInt32%3D1%29%3ANode-class-method" class="signature"><strong>.heading</strong>(level : Int32 = <span class="n">1</span>) : Node</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#html_block%28literal%3AString%29%3ANode-class-method" class="signature"><strong>.html_block</strong>(literal : String) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#HTMLBlock">NodeType::HTMLBlock</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#html_inline%28literal%3AString%29%3ANode-class-method" class="signature"><strong>.html_inline</strong>(literal : String) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#HTMLInline">NodeType::HTMLInline</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#image%28url%3AString%2Ctitle%3D%22%22%29%3ANode-class-method" class="signature"><strong>.image</strong>(url : String, title = <span class="s">&quot;&quot;</span>) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Image">NodeType::Image</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#item%3ANode-class-method" class="signature"><strong>.item</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Item">NodeType::Item</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#linebreak%3ANode-class-method" class="signature"><strong>.linebreak</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Linebreak">NodeType::Linebreak</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#link%28url%3AString%2Ctitle%3D%22%22%29%3ANode-class-method" class="signature"><strong>.link</strong>(url : String, title = <span class="s">&quot;&quot;</span>) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Link">NodeType::Link</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_as_bullet%28tight%3ABool%3Dtrue%29-class-method" class="signature"><strong>.list_as_bullet</strong>(tight : Bool = <span class="n">true</span>)</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#List">NodeType::List</a></code> with <code><a href="../Cmark/ListType.html#Bullet">ListType::Bullet</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list_as_ordered%28tight%3ABool%3Dtrue%2Cstart%3D1%2Cdelim%3DDelimType%3A%3APeriod%29-class-method" class="signature"><strong>.list_as_ordered</strong>(tight : Bool = <span class="n">true</span>, start = <span class="n">1</span>, delim = <span class="t">DelimType</span><span class="t">::</span><span class="t">Period</span>)</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#List">NodeType::List</a></code> with <code><a href="../Cmark/ListType.html#Ordered">ListType::Ordered</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#paragraph%28parent%3ANode%2Cappend%3Dtrue%29%3ANode-class-method" class="signature"><strong>.paragraph</strong>(parent : Node, append = <span class="n">true</span>) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Paragraph">NodeType::Paragraph</a></code> as child of the given <em>parent</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#softbreak%3ANode-class-method" class="signature"><strong>.softbreak</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Softbreak">NodeType::Softbreak</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strikethrough%3ANode-class-method" class="signature"><strong>.strikethrough</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Strikethrough">NodeType::Strikethrough</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strong%3ANode-class-method" class="signature"><strong>.strong</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Strong">NodeType::Strong</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table%28contents%3AArray%28Array%28Node%29%29%29%3ANode-class-method" class="signature"><strong>.table</strong>(contents : Array(Array(Node))) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Table">NodeType::Table</a></code> using a bidimensional array of <code><a href="../Cmark/Node.html">Node</a></code> for <em>contents</em>, with the first array of nodes being its headers.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_row%28table%3ANode%2Ccontents%3AArray%28Node%29%2Cprevious_table_row%3ANode%7CNil%3Dnil%29%3ANode-class-method" class="signature"><strong>.table_row</strong>(table : Node, contents : Array(Node), previous_table_row : Node | Nil = <span class="n">nil</span>) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Table">NodeType::Table</a></code> using <em>contents</em> to populate its cells; if <em>previous_table_row</em> is not nil then the new row is inserted after it, otherwise it is appended as a child of <em>table</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#tasklist_item%28checked%3ABool%3Dfalse%29-class-method" class="signature"><strong>.tasklist_item</strong>(checked : Bool = <span class="n">false</span>)</a>
+        
+          <div class="summary"><p>Makes a tasklist extension node with <code><a href="../Cmark/NodeType.html#Item">NodeType::Item</a></code>, which is <em>checked</em> or not.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text%28literal%3AString%29%3ANode-class-method" class="signature"><strong>.text</strong>(literal : String) : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#Text">NodeType::Text</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#thematic_break%3ANode-class-method" class="signature"><strong>.thematic_break</strong> : Node</a>
+        
+          <div class="summary"><p>Makes a node with <code><a href="../Cmark/NodeType.html#ThematicBreak">NodeType::ThematicBreak</a></code>.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="block_quote:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>block_quote</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#block_quote%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#BlockQuote">NodeType::BlockQuote</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code(literal:String):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>code</strong>(literal : String) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#code%28literal%3AString%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Code">NodeType::Code</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code_block(contents:String,fence_info:String=&quot;&quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>code_block</strong>(contents : String, fence_info : String = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#code_block%28contents%3AString%2Cfence_info%3AString%3D%22%22%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="custom_block(on_enter:String=&quot;&quot;,on_exit:String=&quot;&quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>custom_block</strong>(on_enter : String = <span class="s">&quot;&quot;</span>, on_exit : String = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#custom_block%28on_enter%3AString%3D%22%22%2Con_exit%3AString%3D%22%22%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Mades a node with <code>NodeType::CUSTOM_BLOCK</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="custom_inline(on_enter:String=&quot;&quot;,on_exit:String=&quot;&quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>custom_inline</strong>(on_enter : String = <span class="s">&quot;&quot;</span>, on_exit : String = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#custom_inline%28on_enter%3AString%3D%22%22%2Con_exit%3AString%3D%22%22%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Mades a node with <code>NodeType::CUSTOM_INLINE</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>document</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#document%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Document">NodeType::Document</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="emph:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>emph</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#emph%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Emph">NodeType::Emph</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="heading(level:Int32=1):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>heading</strong>(level : Int32 = <span class="n">1</span>) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#heading%28level%3AInt32%3D1%29%3ANode-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="html_block(literal:String):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>html_block</strong>(literal : String) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#html_block%28literal%3AString%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#HTMLBlock">NodeType::HTMLBlock</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="html_inline(literal:String):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>html_inline</strong>(literal : String) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#html_inline%28literal%3AString%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#HTMLInline">NodeType::HTMLInline</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="image(url:String,title=&quot;&quot;):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>image</strong>(url : String, title = <span class="s">&quot;&quot;</span>) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#image%28url%3AString%2Ctitle%3D%22%22%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Image">NodeType::Image</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="item:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>item</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#item%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Item">NodeType::Item</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="linebreak:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>linebreak</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#linebreak%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Linebreak">NodeType::Linebreak</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="link(url:String,title=&quot;&quot;):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>link</strong>(url : String, title = <span class="s">&quot;&quot;</span>) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#link%28url%3AString%2Ctitle%3D%22%22%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Link">NodeType::Link</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_as_bullet(tight:Bool=true)-class-method">
+      <div class="signature">
+        
+        def self.<strong>list_as_bullet</strong>(tight : Bool = <span class="n">true</span>)
+
+        <a class="method-permalink" href="#list_as_bullet%28tight%3ABool%3Dtrue%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#List">NodeType::List</a></code> with <code><a href="../Cmark/ListType.html#Bullet">ListType::Bullet</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list_as_ordered(tight:Bool=true,start=1,delim=DelimType::Period)-class-method">
+      <div class="signature">
+        
+        def self.<strong>list_as_ordered</strong>(tight : Bool = <span class="n">true</span>, start = <span class="n">1</span>, delim = <span class="t">DelimType</span><span class="t">::</span><span class="t">Period</span>)
+
+        <a class="method-permalink" href="#list_as_ordered%28tight%3ABool%3Dtrue%2Cstart%3D1%2Cdelim%3DDelimType%3A%3APeriod%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#List">NodeType::List</a></code> with <code><a href="../Cmark/ListType.html#Ordered">ListType::Ordered</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="paragraph(parent:Node,append=true):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>paragraph</strong>(parent : <a href="../Cmark/Node.html">Node</a>, append = <span class="n">true</span>) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#paragraph%28parent%3ANode%2Cappend%3Dtrue%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Paragraph">NodeType::Paragraph</a></code> as child of the given <em>parent</em>.</p>
+<p>If <em>append</em> is true the new paragraph will be appended as child of <em>parent</em>,
+otherwise it will be prepended as child.</p>
+<p>It raises <code><a href="../Cmark/TreeManipulationError.html">Cmark::TreeManipulationError</a></code> if cannot be inserted as child of <em>parent</em>.</p>
+<p><span class="flag purple">NOTE</span>  a paragraph node could theoretically be created without a parent.
+However, the HTML renderer of the underlying C library assumes that
+a paragraph node will always have a parent.
+Given that most users will render use such HTML rendering anyways,
+it is better to be safe than to have an invalid memory access.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="softbreak:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>softbreak</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#softbreak%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Softbreak">NodeType::Softbreak</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strikethrough:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>strikethrough</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#strikethrough%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Strikethrough">NodeType::Strikethrough</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strong:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>strong</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#strong%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Strong">NodeType::Strong</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table(contents:Array(Array(Node))):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>table</strong>(contents : Array(Array(<a href="../Cmark/Node.html">Node</a>))) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#table%28contents%3AArray%28Array%28Node%29%29%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Table">NodeType::Table</a></code> using a bidimensional array of <code><a href="../Cmark/Node.html">Node</a></code> for <em>contents</em>,
+with the first array of nodes being its headers.</p>
+<p>Non-header arrays of nodes can be of different size with respect to the the header array of nodes.
+If the non-header array's size is greater than the header's size, the nodes in excess will be discarded.
+If, on the contrary, the non-header array's size is less than the header's size, the table row will be padded with empty cells.</p>
+<p>It raises <code><a href="../Cmark/Error.html">Cmark::Error</a></code> if the headers or <em>contents</em> arrays are empty.</p>
+<p>It raises <code><a href="../Cmark/TreeManipulationError.html">Cmark::TreeManipulationError</a></code> if any node in <em>contents</em> cannot be appended
+to its respective table cell.</p>
+<p>This example</p>
+<pre><code class="language-crystal"><span class="k">include</span> <span class="t">NodeMaker</span>
+contents <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Array</span>(<span class="t">Node</span>)
+contents.push [text(<span class="s">&quot;foo&quot;</span>), text(<span class="s">&quot;bar&quot;</span>)]
+contents.push [text(<span class="s">&quot;fiz&quot;</span>), text(<span class="s">&quot;baz&quot;</span>)]
+node <span class="o">=</span> table(contents)
+node.render_html</code></pre>
+<p>renders the following HTML (formatted for better reading):</p>
+<pre><code class="language-text">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;foo&lt;/th&gt;
+      &lt;th&gt;bar&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fiz&lt;/td&gt;
+       &lt;td&gt;baz&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_row(table:Node,contents:Array(Node),previous_table_row:Node|Nil=nil):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>table_row</strong>(table : <a href="../Cmark/Node.html">Node</a>, contents : Array(<a href="../Cmark/Node.html">Node</a>), previous_table_row : <a href="../Cmark/Node.html">Node</a> | Nil = <span class="n">nil</span>) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#table_row%28table%3ANode%2Ccontents%3AArray%28Node%29%2Cprevious_table_row%3ANode%7CNil%3Dnil%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Table">NodeType::Table</a></code> using <em>contents</em> to populate its cells; if <em>previous_table_row</em>
+is not nil then the new row is inserted after it, otherwise it is appended as a child of <em>table</em>.</p>
+<p><span class="flag purple">NOTE</span>  If creating a table from scratch is better to use <code><a href="../Cmark/NodeMaker.html#table%28contents%3AArray%28Array%28Node%29%29%29%3ANode-class-method">.table</a></code>.</p>
+<p>If <em>contents</em> size is greater than the number of columns in <em>table</em>, the nodes in excess will be discarded.
+If, on the contrary, <em>contents</em> size is less than number of columns, the table row will be padded with empty cells.</p>
+<p>It raises <code><a href="../Cmark/Error.html">Cmark::Error</a></code> if  <em>contents</em> is empty, if <em>table</em> is not a node with <code><a href="../Cmark/NodeType.html#Table">NodeType::Table</a></code>,
+or if <em>previous_table_row</em> is set but is not a child of <em>table</em>.</p>
+<p>It raises <code><a href="../Cmark/TreeManipulationError.html">Cmark::TreeManipulationError</a></code> if any node in <em>contents</em> cannot be appended
+to its respective table cell.</p>
+<p>This example</p>
+<pre><code class="language-crystal"><span class="k">include</span> <span class="t">NodeMaker</span>
+table_contents <span class="o">=</span> <span class="o">[]</span> <span class="k">of</span> <span class="t">Array</span>(<span class="t">Node</span>)
+table_contents.push [text(<span class="s">&quot;foo&quot;</span>), text(<span class="s">&quot;bar&quot;</span>)]
+table_contents.push [text(<span class="s">&quot;fee&quot;</span>), text(<span class="s">&quot;ber&quot;</span>)]
+table_node <span class="o">=</span> table(table_contents)
+previous_table_row <span class="o">=</span> table_node.first_child.not_nil!
+contents <span class="o">=</span> [text(<span class="s">&quot;fiz&quot;</span>), text(<span class="s">&quot;baz&quot;</span>)]
+table_row_node <span class="o">=</span> table_row(table, contents, previous_table_row)
+table_node.render_html</code></pre>
+<p>renders the following HTML (formatted for better reading):</p>
+<pre><code class="language-text">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;foo&lt;/th&gt;
+      &lt;th&gt;bar&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fiz&lt;/td&gt;
+       &lt;td&gt;baz&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;fee&lt;/td&gt;
+       &lt;td&gt;ber&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="tasklist_item(checked:Bool=false)-class-method">
+      <div class="signature">
+        
+        def self.<strong>tasklist_item</strong>(checked : Bool = <span class="n">false</span>)
+
+        <a class="method-permalink" href="#tasklist_item%28checked%3ABool%3Dfalse%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a tasklist extension node with <code><a href="../Cmark/NodeType.html#Item">NodeType::Item</a></code>, which is <em>checked</em> or not.</p>
+<p>To check if a given node is a tasklist item use <code><a href="../Cmark/Node.html#tasklist_item%3F%3ABool-instance-method">Node#tasklist_item?</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text(literal:String):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>text</strong>(literal : String) : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#text%28literal%3AString%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#Text">NodeType::Text</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="thematic_break:Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>thematic_break</strong> : <a href="../Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#thematic_break%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Makes a node with <code><a href="../Cmark/NodeType.html#ThematicBreak">NodeType::ThematicBreak</a></code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

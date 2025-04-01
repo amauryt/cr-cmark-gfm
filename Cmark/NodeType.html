@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.14.0">
+<meta name="crystal_docs.project_version" content="0.1.3">
+<meta name="crystal_docs.project_name" content="cmark">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="cmark">
+  <title>Cmark::NodeType - cmark 0.1.3</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          cmark
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.3
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="cmark/Cmark" data-name="cmark">
+      <a href="../Cmark.html">Cmark</a>
+      
+        <ul>
+  
+  <li class=" " data-id="cmark/Cmark/Alignment" data-name="cmark::alignment">
+      <a href="../Cmark/Alignment.html">Alignment</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/DelimType" data-name="cmark::delimtype">
+      <a href="../Cmark/DelimType.html">DelimType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Error" data-name="cmark::error">
+      <a href="../Cmark/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Event" data-name="cmark::event">
+      <a href="../Cmark/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/EventIterator" data-name="cmark::eventiterator">
+      <a href="../Cmark/EventIterator.html">EventIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Extension" data-name="cmark::extension">
+      <a href="../Cmark/Extension.html">Extension</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/FencingDetails" data-name="cmark::fencingdetails">
+      <a href="../Cmark/FencingDetails.html">FencingDetails</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/HTMLRenderer" data-name="cmark::htmlrenderer">
+      <a href="../Cmark/HTMLRenderer.html">HTMLRenderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/ListType" data-name="cmark::listtype">
+      <a href="../Cmark/ListType.html">ListType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Node" data-name="cmark::node">
+      <a href="../Cmark/Node.html">Node</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeMaker" data-name="cmark::nodemaker">
+      <a href="../Cmark/NodeMaker.html">NodeMaker</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeSetterError" data-name="cmark::nodesettererror">
+      <a href="../Cmark/NodeSetterError.html">NodeSetterError</a>
+      
+    </li>
+  
+  <li class=" current" data-id="cmark/Cmark/NodeType" data-name="cmark::nodetype">
+      <a href="../Cmark/NodeType.html">NodeType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Option" data-name="cmark::option">
+      <a href="../Cmark/Option.html">Option</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Renderer" data-name="cmark::renderer">
+      <a href="../Cmark/Renderer.html">Renderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/TreeManipulationError" data-name="cmark::treemanipulationerror">
+      <a href="../Cmark/TreeManipulationError.html">TreeManipulationError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">enum</span> Cmark::<wbr>NodeType
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Represents the type of a node.</p>
+<p>If valid, the type can be grouped into several categories:</p>
+<ol>
+<li>block or inline; 2) Commonmark or GFM; and 3) container or leaf.
+Use the respective method to check the node type category:</li>
+</ol>
+<ol>
+<li><code><a href="../Cmark/NodeType.html#block%3F-instance-method">#block?</a></code> or <code><a href="../Cmark/NodeType.html#inline%3F-instance-method">#inline?</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#commonmark%3F-instance-method">#commonmark?</a></code> or <code><a href="../Cmark/NodeType.html#gfm%3F-instance-method">#gfm?</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#container%3F-instance-method">#container?</a></code> or <code><a href="../Cmark/NodeType.html#leaf%3F-instance-method">#leaf?</a></code></li>
+</ol>
+<p>If the node is <em>invalid</em> it has the type <code><a href="../Cmark/NodeType.html#None">None</a></code>, and all of the previous methods will return false.</p>
+<p>Commonmark:</p>
+<ul>
+<li>Block types:
+<ul>
+<li><code><a href="../Cmark/NodeType.html#Document">Document</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#BlockQuote">BlockQuote</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#List">List</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Item">Item</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#CodeBlock">CodeBlock</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#HTMLBlock">HTMLBlock</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#CustomBlock">CustomBlock</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Paragraph">Paragraph</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Heading">Heading</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#ThematicBreak">ThematicBreak</a></code></li>
+</ul>
+</li>
+<li>Inline types:
+<ul>
+<li><code><a href="../Cmark/NodeType.html#Text">Text</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Softbreak">Softbreak</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Linebreak">Linebreak</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Code">Code</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#HTMLInline">HTMLInline</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#CustomInline">CustomInline</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Emph">Emph</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Strong">Strong</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Link">Link</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Image">Image</a></code></li>
+</ul>
+</li>
+</ul>
+<p>GFM:</p>
+<ul>
+<li>Block types:
+<ul>
+<li><code><a href="../Cmark/NodeType.html#Table">Table</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#TableRow">TableRow</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#TableCell">TableCell</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#FootnoteDefinition">FootnoteDefinition</a></code></li>
+</ul>
+</li>
+<li>Inline types:
+<ul>
+<li><code><a href="../Cmark/NodeType.html#Strikethrough">Strikethrough</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#FootnoteReference">FootnoteReference</a></code></li>
+</ul>
+</li>
+</ul>
+<p>Leaf nodes:</p>
+<ul>
+<li><code><a href="../Cmark/NodeType.html#HTMLBlock">HTMLBlock</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#ThematicBreak">ThematicBreak</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#CodeBlock">CodeBlock</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Text">Text</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Softbreak">Softbreak</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Linebreak">Linebreak</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#Code">Code</a></code></li>
+<li><code><a href="../Cmark/NodeType.html#HTMLInline">HTMLInline</a></code></li>
+</ul>
+<p><span class="flag purple">NOTE</span>  The GFM syntax extension for tasklists does not create a new node type. That is, a tasklist item
+has <code><a href="../Cmark/NodeType.html#Item">NodeType::Item</a></code>. To check if a given node is a tasklist item use <code><a href="../Cmark/Node.html#tasklist_item%3F%3ABool-instance-method">Node#tasklist_item?</a></code>; to set if a
+list item node represents a tasklist or not use <code><a href="../Cmark/Node.html#tasklist_item%3D%28tasklist%3ABool%29%3ABool-instance-method">Node#tasklist_item=</a></code>.</p>
+<p><span class="flag purple">NOTE</span>  Both footnote elements are part of GFM, but they are not syntax extensions and they
+are not defined in the GFM spec.
+Therefore, they can be enabled in so-called <em>Commonmark-only</em> methods using <code><a href="../Cmark/Option.html#Footnotes">Option::Footnotes</a></code>.
+Normal inconsistencies when trying to define a standard specification‽
+For more information regarding footnotes in cmark-gfm see <a href="https://github.com/github/cmark-gfm/pull/64">this pull request</a>.
+To check if an element is part of a syntax extension use <code><a href="../Cmark/NodeType.html#syntax_extension%3F-instance-method">#syntax_extension?</a></code>.</p>
+<p><span class="flag purple">NOTE</span>  The numeric values of GFM extensions types do not correspond to their counterpart in the C library because
+these are not predefined constants, they are dynamically registered at runtime.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      cmark/node_type.cr
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="enum-members" class="anchor" href="#enum-members">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Enum Members
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="None">
+        <strong>None</strong> = <code><span class="n">0</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Invalid node</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Document">
+        <strong>Document</strong> = <code><span class="n">32769</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="BlockQuote">
+        <strong>BlockQuote</strong> = <code><span class="n">32770</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="List">
+        <strong>List</strong> = <code><span class="n">32771</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Item">
+        <strong>Item</strong> = <code><span class="n">32772</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="CodeBlock">
+        <strong>CodeBlock</strong> = <code><span class="n">32773</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="HTMLBlock">
+        <strong>HTMLBlock</strong> = <code><span class="n">32774</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="CustomBlock">
+        <strong>CustomBlock</strong> = <code><span class="n">32775</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Paragraph">
+        <strong>Paragraph</strong> = <code><span class="n">32776</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Heading">
+        <strong>Heading</strong> = <code><span class="n">32777</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="ThematicBreak">
+        <strong>ThematicBreak</strong> = <code><span class="n">32778</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Block / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="FootnoteDefinition">
+        <strong>FootnoteDefinition</strong> = <code><span class="n">32779</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>GFM / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Text">
+        <strong>Text</strong> = <code><span class="n">49153</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Softbreak">
+        <strong>Softbreak</strong> = <code><span class="n">49154</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Linebreak">
+        <strong>Linebreak</strong> = <code><span class="n">49155</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Code">
+        <strong>Code</strong> = <code><span class="n">49156</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="HTMLInline">
+        <strong>HTMLInline</strong> = <code><span class="n">49157</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Leaf</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="CustomInline">
+        <strong>CustomInline</strong> = <code><span class="n">49158</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Emph">
+        <strong>Emph</strong> = <code><span class="n">49159</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Strong">
+        <strong>Strong</strong> = <code><span class="n">49160</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Link">
+        <strong>Link</strong> = <code><span class="n">49161</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Image">
+        <strong>Image</strong> = <code><span class="n">49162</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>Commonmark / Inline / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="FootnoteReference">
+        <strong>FootnoteReference</strong> = <code><span class="n">49163</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>GFM / Inline / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Table">
+        <strong>Table</strong> = <code><span class="n">32785</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>GFM / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="TableRow">
+        <strong>TableRow</strong> = <code><span class="n">32786</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>GFM / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="TableCell">
+        <strong>TableCell</strong> = <code><span class="n">32787</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>GFM / Block / Container</p>
+      </dd>
+      
+    
+      <dt class="entry-const" id="Strikethrough">
+        <strong>Strikethrough</strong> = <code><span class="n">49169</span></code>
+      </dt>
+      
+      <dd class="entry-const-doc">
+        <p>GFM / Inline / Container</p>
+      </dd>
+      
+    
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#block%3F-instance-method" class="signature"><strong>#block?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#block_quote%3F-instance-method" class="signature"><strong>#block_quote?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code%3F-instance-method" class="signature"><strong>#code?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#code_block%3F-instance-method" class="signature"><strong>#code_block?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#commonmark%3F-instance-method" class="signature"><strong>#commonmark?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#container%3F-instance-method" class="signature"><strong>#container?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#custom_block%3F-instance-method" class="signature"><strong>#custom_block?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#custom_inline%3F-instance-method" class="signature"><strong>#custom_inline?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document%3F-instance-method" class="signature"><strong>#document?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#emph%3F-instance-method" class="signature"><strong>#emph?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_definition%3F-instance-method" class="signature"><strong>#footnote_definition?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#footnote_reference%3F-instance-method" class="signature"><strong>#footnote_reference?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gfm%3F-instance-method" class="signature"><strong>#gfm?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#heading%3F-instance-method" class="signature"><strong>#heading?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#html_block%3F-instance-method" class="signature"><strong>#html_block?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#html_inline%3F-instance-method" class="signature"><strong>#html_inline?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#image%3F-instance-method" class="signature"><strong>#image?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inline%3F-instance-method" class="signature"><strong>#inline?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#item%3F-instance-method" class="signature"><strong>#item?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#leaf%3F-instance-method" class="signature"><strong>#leaf?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#linebreak%3F-instance-method" class="signature"><strong>#linebreak?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#link%3F-instance-method" class="signature"><strong>#link?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#list%3F-instance-method" class="signature"><strong>#list?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#none%3F-instance-method" class="signature"><strong>#none?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#paragraph%3F-instance-method" class="signature"><strong>#paragraph?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#softbreak%3F-instance-method" class="signature"><strong>#softbreak?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strikethrough%3F-instance-method" class="signature"><strong>#strikethrough?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#strong%3F-instance-method" class="signature"><strong>#strong?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#syntax_extension%3F-instance-method" class="signature"><strong>#syntax_extension?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table%3F-instance-method" class="signature"><strong>#table?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_cell%3F-instance-method" class="signature"><strong>#table_cell?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#table_row%3F-instance-method" class="signature"><strong>#table_row?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text%3F-instance-method" class="signature"><strong>#text?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#thematic_break%3F-instance-method" class="signature"><strong>#thematic_break?</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="block?-instance-method">
+      <div class="signature">
+        
+        def <strong>block?</strong>
+
+        <a class="method-permalink" href="#block%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="block_quote?-instance-method">
+      <div class="signature">
+        
+        def <strong>block_quote?</strong>
+
+        <a class="method-permalink" href="#block_quote%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code?-instance-method">
+      <div class="signature">
+        
+        def <strong>code?</strong>
+
+        <a class="method-permalink" href="#code%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="code_block?-instance-method">
+      <div class="signature">
+        
+        def <strong>code_block?</strong>
+
+        <a class="method-permalink" href="#code_block%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="commonmark?-instance-method">
+      <div class="signature">
+        
+        def <strong>commonmark?</strong>
+
+        <a class="method-permalink" href="#commonmark%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="container?-instance-method">
+      <div class="signature">
+        
+        def <strong>container?</strong>
+
+        <a class="method-permalink" href="#container%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="custom_block?-instance-method">
+      <div class="signature">
+        
+        def <strong>custom_block?</strong>
+
+        <a class="method-permalink" href="#custom_block%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="custom_inline?-instance-method">
+      <div class="signature">
+        
+        def <strong>custom_inline?</strong>
+
+        <a class="method-permalink" href="#custom_inline%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document?-instance-method">
+      <div class="signature">
+        
+        def <strong>document?</strong>
+
+        <a class="method-permalink" href="#document%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="emph?-instance-method">
+      <div class="signature">
+        
+        def <strong>emph?</strong>
+
+        <a class="method-permalink" href="#emph%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_definition?-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_definition?</strong>
+
+        <a class="method-permalink" href="#footnote_definition%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="footnote_reference?-instance-method">
+      <div class="signature">
+        
+        def <strong>footnote_reference?</strong>
+
+        <a class="method-permalink" href="#footnote_reference%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gfm?-instance-method">
+      <div class="signature">
+        
+        def <strong>gfm?</strong>
+
+        <a class="method-permalink" href="#gfm%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="heading?-instance-method">
+      <div class="signature">
+        
+        def <strong>heading?</strong>
+
+        <a class="method-permalink" href="#heading%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="html_block?-instance-method">
+      <div class="signature">
+        
+        def <strong>html_block?</strong>
+
+        <a class="method-permalink" href="#html_block%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="html_inline?-instance-method">
+      <div class="signature">
+        
+        def <strong>html_inline?</strong>
+
+        <a class="method-permalink" href="#html_inline%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="image?-instance-method">
+      <div class="signature">
+        
+        def <strong>image?</strong>
+
+        <a class="method-permalink" href="#image%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inline?-instance-method">
+      <div class="signature">
+        
+        def <strong>inline?</strong>
+
+        <a class="method-permalink" href="#inline%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="item?-instance-method">
+      <div class="signature">
+        
+        def <strong>item?</strong>
+
+        <a class="method-permalink" href="#item%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="leaf?-instance-method">
+      <div class="signature">
+        
+        def <strong>leaf?</strong>
+
+        <a class="method-permalink" href="#leaf%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="linebreak?-instance-method">
+      <div class="signature">
+        
+        def <strong>linebreak?</strong>
+
+        <a class="method-permalink" href="#linebreak%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="link?-instance-method">
+      <div class="signature">
+        
+        def <strong>link?</strong>
+
+        <a class="method-permalink" href="#link%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="list?-instance-method">
+      <div class="signature">
+        
+        def <strong>list?</strong>
+
+        <a class="method-permalink" href="#list%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="none?-instance-method">
+      <div class="signature">
+        
+        def <strong>none?</strong>
+
+        <a class="method-permalink" href="#none%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="paragraph?-instance-method">
+      <div class="signature">
+        
+        def <strong>paragraph?</strong>
+
+        <a class="method-permalink" href="#paragraph%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="softbreak?-instance-method">
+      <div class="signature">
+        
+        def <strong>softbreak?</strong>
+
+        <a class="method-permalink" href="#softbreak%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strikethrough?-instance-method">
+      <div class="signature">
+        
+        def <strong>strikethrough?</strong>
+
+        <a class="method-permalink" href="#strikethrough%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="strong?-instance-method">
+      <div class="signature">
+        
+        def <strong>strong?</strong>
+
+        <a class="method-permalink" href="#strong%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="syntax_extension?-instance-method">
+      <div class="signature">
+        
+        def <strong>syntax_extension?</strong>
+
+        <a class="method-permalink" href="#syntax_extension%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table?-instance-method">
+      <div class="signature">
+        
+        def <strong>table?</strong>
+
+        <a class="method-permalink" href="#table%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_cell?-instance-method">
+      <div class="signature">
+        
+        def <strong>table_cell?</strong>
+
+        <a class="method-permalink" href="#table_cell%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="table_row?-instance-method">
+      <div class="signature">
+        
+        def <strong>table_row?</strong>
+
+        <a class="method-permalink" href="#table_row%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text?-instance-method">
+      <div class="signature">
+        
+        def <strong>text?</strong>
+
+        <a class="method-permalink" href="#text%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="thematic_break?-instance-method">
+      <div class="signature">
+        
+        def <strong>thematic_break?</strong>
+
+        <a class="method-permalink" href="#thematic_break%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+</div>
+
+</body>
+</html>

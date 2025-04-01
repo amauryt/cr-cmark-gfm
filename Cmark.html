@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.14.0">
+<meta name="crystal_docs.project_version" content="0.1.3">
+<meta name="crystal_docs.project_name" content="cmark">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="cmark">
+  <title>Cmark - cmark 0.1.3</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          cmark
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.3
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="cmark/Cmark" data-name="cmark">
+      <a href="Cmark.html">Cmark</a>
+      
+        <ul>
+  
+  <li class=" " data-id="cmark/Cmark/Alignment" data-name="cmark::alignment">
+      <a href="Cmark/Alignment.html">Alignment</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/DelimType" data-name="cmark::delimtype">
+      <a href="Cmark/DelimType.html">DelimType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Error" data-name="cmark::error">
+      <a href="Cmark/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Event" data-name="cmark::event">
+      <a href="Cmark/Event.html">Event</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/EventIterator" data-name="cmark::eventiterator">
+      <a href="Cmark/EventIterator.html">EventIterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Extension" data-name="cmark::extension">
+      <a href="Cmark/Extension.html">Extension</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/FencingDetails" data-name="cmark::fencingdetails">
+      <a href="Cmark/FencingDetails.html">FencingDetails</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/HTMLRenderer" data-name="cmark::htmlrenderer">
+      <a href="Cmark/HTMLRenderer.html">HTMLRenderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/ListType" data-name="cmark::listtype">
+      <a href="Cmark/ListType.html">ListType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Node" data-name="cmark::node">
+      <a href="Cmark/Node.html">Node</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeMaker" data-name="cmark::nodemaker">
+      <a href="Cmark/NodeMaker.html">NodeMaker</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeSetterError" data-name="cmark::nodesettererror">
+      <a href="Cmark/NodeSetterError.html">NodeSetterError</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/NodeType" data-name="cmark::nodetype">
+      <a href="Cmark/NodeType.html">NodeType</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Option" data-name="cmark::option">
+      <a href="Cmark/Option.html">Option</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/Renderer" data-name="cmark::renderer">
+      <a href="Cmark/Renderer.html">Renderer</a>
+      
+    </li>
+  
+  <li class=" " data-id="cmark/Cmark/TreeManipulationError" data-name="cmark::treemanipulationerror">
+      <a href="Cmark/TreeManipulationError.html">TreeManipulationError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Cmark
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>This module offers high-level parsing and rendering of markdown content, be it Commonmark-only, full GFM, or partially GFM.</p>
+<p>If the content is Commonmark-only use the respective <em>commonmark</em>  parsing and
+HTML rendering methods for the best performance.
+If all of the GFM extensions must be enabled use the <em>gfm</em> methods.
+For partial support of GFM extensions use the more generic <em>document</em> methods.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      cmark.cr
+    
+    <br/>
+  
+    
+      cmark/alignment.cr
+    
+    <br/>
+  
+    
+      cmark/delim_type.cr
+    
+    <br/>
+  
+    
+      cmark/error.cr
+    
+    <br/>
+  
+    
+      cmark/event.cr
+    
+    <br/>
+  
+    
+      cmark/event_iterator.cr
+    
+    <br/>
+  
+    
+      cmark/extension.cr
+    
+    <br/>
+  
+    
+      cmark/fencing_details.cr
+    
+    <br/>
+  
+    
+      cmark/lib_cmark.cr
+    
+    <br/>
+  
+    
+      cmark/list_type.cr
+    
+    <br/>
+  
+    
+      cmark/node.cr
+    
+    <br/>
+  
+    
+      cmark/node_maker.cr
+    
+    <br/>
+  
+    
+      cmark/node_type.cr
+    
+    <br/>
+  
+    
+      cmark/option.cr
+    
+    <br/>
+  
+    
+      cmark/renderer.cr
+    
+    <br/>
+  
+    
+      cmark/renderers/html_renderer.cr
+    
+    <br/>
+  
+    
+      cmark/version.cr
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.3&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#commonmark_to_html%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3AString-class-method" class="signature"><strong>.commonmark_to_html</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : String</a>
+        
+          <div class="summary"><p>Renders a Commonmark-only text as HTML.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#document_to_html%28text%3AString%2Coptions%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3AString-class-method" class="signature"><strong>.document_to_html</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>) : String</a>
+        
+          <div class="summary"><p>Renders commonmark text as HTML.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#gfm_to_html%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3AString-class-method" class="signature"><strong>.gfm_to_html</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : String</a>
+        
+          <div class="summary"><p>Renders commonmark text with all of the GFM extensions enabled as HTML.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_commonmark%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3ANode-class-method" class="signature"><strong>.parse_commonmark</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : Node</a>
+        
+          <div class="summary"><p>Parses a Commonmark-only document text.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_document%28text%3AString%2Coptions%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3ANode-class-method" class="signature"><strong>.parse_document</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>) : Node</a>
+        
+          <div class="summary"><p>Parses a commonmark document text.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parse_gfm%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3ANode-class-method" class="signature"><strong>.parse_gfm</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : Node</a>
+        
+          <div class="summary"><p>Parses a commonmark document text with all of the GFM extensions enabled.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="commonmark_to_html(text:String,options=Option::None):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>commonmark_to_html</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : String
+
+        <a class="method-permalink" href="#commonmark_to_html%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders a Commonmark-only text as HTML.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="document_to_html(text:String,options=Option::None,extensions=Extension::None):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>document_to_html</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>) : String
+
+        <a class="method-permalink" href="#document_to_html%28text%3AString%2Coptions%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders commonmark text as HTML.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="gfm_to_html(text:String,options=Option::None):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>gfm_to_html</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : String
+
+        <a class="method-permalink" href="#gfm_to_html%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Renders commonmark text with all of the GFM extensions enabled as HTML.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_commonmark(text:String,options=Option::None):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse_commonmark</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : <a href="Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#parse_commonmark%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Parses a Commonmark-only document text.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_document(text:String,options=Option::None,extensions=Extension::None):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse_document</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>, extensions = <span class="t">Extension</span><span class="t">::</span><span class="t">None</span>) : <a href="Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#parse_document%28text%3AString%2Coptions%3DOption%3A%3ANone%2Cextensions%3DExtension%3A%3ANone%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Parses a commonmark document text.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parse_gfm(text:String,options=Option::None):Node-class-method">
+      <div class="signature">
+        
+        def self.<strong>parse_gfm</strong>(text : String, options = <span class="t">Option</span><span class="t">::</span><span class="t">None</span>) : <a href="Cmark/Node.html">Node</a>
+
+        <a class="method-permalink" href="#parse_gfm%28text%3AString%2Coptions%3DOption%3A%3ANone%29%3ANode-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Parses a commonmark document text with all of the GFM extensions enabled.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
