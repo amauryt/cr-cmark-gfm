@@ -10,7 +10,14 @@ endif
 all: build
 
 build: $(CMARK) $(SOURCES)
-	cd $(CMARK) && INSTALL_PREFIX=.. make cmake_build
+	mkdir -p $(CMARK)/build
+	cd $(CMARK)/build && cmake .. \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=.. \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cd $(CMARK)/build && make
+
 	cp $(CMARK)/build/src/libcmark-gfm.a .
 	cp $(CMARK)/build/src/libcmark-gfm.$(COMPILED_EXT)* .
 	cp $(CMARK)/build/extensions/libcmark-gfm-extensions.a .
